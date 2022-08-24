@@ -13,6 +13,7 @@
   --hover-gray: #e1e1e1;
   --menu-hover: #e3e3e3;
   --radius: 0;
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root[data-theme="green"] {
@@ -22,7 +23,7 @@
   --hover-gray: #33721b;
   --menu-hover: #33721b;
   --radius: 15px;
-  --font-family-green: "Inconsolata", monospace;
+  --font-family: "Inconsolata", monospace;
 }
 
 :root[data-theme="blue"] {
@@ -32,6 +33,7 @@
   --hover-gray: #08639f;
   --menu-hover: #2166ef;
   --radius: 15px 0 15px 0;
+  --font-family: "Kalam", cursive;
 }
 
 :root[data-theme="purple"] {
@@ -41,6 +43,7 @@
   --hover-gray: #530053;
   --menu-hover: #530053;
   --radius: 10px 10px 10px 0;
+  --font-family: "Pathway Gothic One", sans-serif;
 }
 
 * {
@@ -54,7 +57,7 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
   background: var(--background);
 }
 
@@ -97,7 +100,7 @@ li:hover {
 }
 
 h1 {
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
   font-size: 0.8rem;
   margin-top: 8px;
   margin-left: 10px;
@@ -137,7 +140,7 @@ h1 {
   margin-left: 5px;
   margin-top: 4px;
   font-size: 1.3em;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
 }
 
 /* the result part */
@@ -153,7 +156,7 @@ h1 {
   align-self: flex-end;
   margin-right: 10px;
   font-weight: 600;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
 }
 
 .up {
@@ -188,7 +191,7 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 0.8em;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
   border: none;
   background-color: transparent;
 }
@@ -228,7 +231,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
 }
 
 .Btn:hover {
@@ -252,7 +255,7 @@ h1 {
   display: flex;
   align-items: center;
   padding-left: 13px;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
 }
 
 .mem {
@@ -272,7 +275,7 @@ h1 {
   margin-left: 8px;
   font-size: 0.9em;
   font-weight: bold;
-  font-family: var(--font-family-green);
+  font-family: var(--font-family);
 }
 
 .trash {
