@@ -22,8 +22,7 @@
   --hover-gray: #33721b;
   --menu-hover: #33721b;
   --radius: 15px;
-  --font-family-ms: "Inconsolata", monospace;
-  --font-family-btn: "Inconsolata", monospace;
+  --font-family-green: "Inconsolata", monospace;
 }
 
 :root[data-theme="blue"] {
@@ -98,6 +97,7 @@ li:hover {
 }
 
 h1 {
+  font-family: var(--font-family-green);
   font-size: 0.8rem;
   margin-top: 8px;
   margin-left: 10px;
@@ -135,8 +135,9 @@ h1 {
 
 .stand {
   margin-left: 5px;
-  margin-top: 9px;
-  font-family: var(--font-family-btn);
+  margin-top: 4px;
+  font-size: 1.3em;
+  font-family: var(--font-family-green);
 }
 
 /* the result part */
@@ -152,6 +153,7 @@ h1 {
   align-self: flex-end;
   margin-right: 10px;
   font-weight: 600;
+  font-family: var(--font-family-green);
 }
 
 .up {
@@ -185,7 +187,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-family-ms);
+  font-size: 0.8em;
+  font-family: var(--font-family-green);
   border: none;
   background-color: transparent;
 }
@@ -203,9 +206,8 @@ h1 {
 }
 
 .num {
-  font-family: var(--font-family-btn);
-  /* font-size: 1.6em; */
-  /* font-weight: 600; */
+  /* font-size: 1.6em;
+  font-weight: 600; */
   background: var(--num-btn);
 }
 
@@ -226,7 +228,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-family-btn);
+  font-family: var(--font-family-green);
 }
 
 .Btn:hover {
@@ -250,6 +252,7 @@ h1 {
   display: flex;
   align-items: center;
   padding-left: 13px;
+  font-family: var(--font-family-green);
 }
 
 .mem {
@@ -269,6 +272,7 @@ h1 {
   margin-left: 8px;
   font-size: 0.9em;
   font-weight: bold;
+  font-family: var(--font-family-green);
 }
 
 .trash {
