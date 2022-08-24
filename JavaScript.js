@@ -11,7 +11,7 @@ btnmenu.addEventListener("click", function () {
     root.setAttribute("data-theme", "blue");
   } else if (root.getAttribute("data-theme") === "blue") {
     root.setAttribute("data-theme", "purple");
-  } else {
+  } else if (root.getAttribute("data-theme") === "purple") {
     root.setAttribute("data-theme", "defult");
   }
 });
