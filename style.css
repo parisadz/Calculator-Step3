@@ -150,11 +150,38 @@ h1 {
   justify-content: space-between;
 }
 
-.number {
+/* .number {
   font-size: 2.8rem;
   align-self: flex-end;
   margin-right: 10px;
   font-weight: 600;
+  font-family: var(--font-family);
+} */
+
+/* .output {
+  font-size: 2.8rem;
+  align-self: flex-end;
+  margin-right: 10px;
+  font-weight: 600;
+  font-family: var(--font-family);
+} */
+
+.output {
+  margin-right: 10px;
+  font-size: 2.8rem;
+  font-weight: 600;
+  font-family: var(--font-family);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operand {
+  color: #9c9c9cbf;
+  font-size: 1.8rem;
   font-family: var(--font-family);
 }
 
