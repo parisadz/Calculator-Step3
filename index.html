@@ -60,10 +60,11 @@
         <!-- start result -->
         <div class="output">
           <div class="previous-operand" data-previous-operand></div>
-          <div class="current-operand" data-current-operand></div>
+          <div class="current-operand" data-current-operand>
+            <p class="number">0</p>
+          </div>
         </div>
         <!-- end result -->
-        <!-- <p class="number">0</p> -->
         <!-- start M's -->
         <div class="small">
           <div class="small-btn-ms">
@@ -85,7 +86,7 @@
       <!-- end M's -->
       <!-- start buttons -->
       <div id="buttons">
-        <button class="Btn dark fourth">
+        <button class="Btn dark fourth" value="percent" data-perecent>
           <img
             src="https://img.icons8.com/metro/26/000000/percentage2--v1.png"
           />
@@ -101,7 +102,7 @@
           ÷
           <!-- <img src="https://img.icons8.com/small/30/undefined/divide.png" /> -->
         </button>
-        <button class="Btn dark third">
+        <button class="Btn dark third" value="radical" data-radical>
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/square-root.png"
           />
@@ -115,7 +116,9 @@
             src="https://img.icons8.com/material/24/000000/multiply--v1.png"
           /> -->
         </button>
-        <button class="Btn dark second">&#x1D465;&#xb2;</button>
+        <button class="Btn dark second" value="power2" data-power2>
+          &#x1D465;&#xb2;
+        </button>
         <button class="Btn num" data-number>4</button>
         <button class="Btn num" data-number>5</button>
         <button class="Btn num" data-number>6</button>
@@ -125,7 +128,9 @@
             src="https://img.icons8.com/material-two-tone/24/000000/minus--v1.png"
           /> -->
         </button>
-        <button class="Btn dark btnhide">&#x1D465;&#xb3;</button>
+        <button class="Btn dark btnhide" value="power3" data-power3>
+          &#x1D465;&#xb3;
+        </button>
         <button class="Btn num" data-number>1</button>
         <button class="Btn num" data-number>2</button>
         <button class="Btn num" data-number>3</button>
@@ -135,10 +140,15 @@
             src="https://img.icons8.com/material/24/000000/plus-math--v2.png"
           /> -->
         </button>
-        <button class="Btn dark first">
-          <img class="one-x" src="assets\pictures\1x.png" alt="1/x" />
+        <button class="Btn dark first" value="onedividex" data-onedividex>
+          <img
+            class="one-x"
+            src="assets\pictures\1x.png"
+            alt="1/x"
+            data-operation
+          />
         </button>
-        <button class="Btn dark">
+        <button class="Btn dark" value="plus-minus" data-plasminus>
           <img
             src="https://img.icons8.com/fluency-systems-regular/28/undefined/plus-minus.png"
           />
@@ -154,7 +164,7 @@
       </div>
       <!-- end buttons -->
       <!-- start history and memory -->
-      <div id="history">
+      <div class="histoty-element" id="history">
         <div class="history-and-memory">
           <p class="his">History</p>
           <p class="mem">Memory</p>
