@@ -422,16 +422,21 @@ button:hover:enabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 40px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 20px;
 }
 
 .trash-div:hover {
   background-color: var(--hover-gray);
   border-radius: var(--border);
+}
+
+.trash-main {
+  width: 20px;
+  height: 20px;
 }
 
 .history-save,
