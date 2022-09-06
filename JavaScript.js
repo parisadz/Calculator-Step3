@@ -222,14 +222,16 @@ class Calculator {
           this.expression = true;
           return;
         } else {
-          alert("√ for negative numbers is not allowed");
+          alert(
+            "√ for negative numbers, zero and less than zero is not allowed"
+          );
           this.fullClear();
           return;
         }
       case "pow2":
         number = Math.pow(number, 2);
         document.getElementById("previousNumber").innerHTML =
-          "sqr (" + this.displayValue + ")";
+          "sqr(" + this.displayValue + ")";
         this.displayValue = parseFloat(number.toFixed(7));
         this.firstNumber = parseFloat(number.toFixed(7));
         this.expression = true;
