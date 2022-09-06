@@ -174,17 +174,18 @@ h1 {
   font-family: var(--font-family);
 }
 
-#previousText {
+#previousNumber {
   align-self: flex-end;
   color: #b1afaf;
   font-family: var(--font-family);
 }
 
-.currentText {
+.currentNumber {
   width: 100%;
   padding-left: 4px;
   border: none;
   font-size: 2.5rem;
+  font-weight: bold;
   text-align: right;
   font-family: var(--font-family);
   background-color: transparent;
