@@ -1,3 +1,4 @@
+/* themable part */
 :root[data-theme="default"] {
   --background: #f3f3f3;
   --dark-btn: #e8e8e8;
@@ -37,6 +38,9 @@
   --radius: 10px 10px 10px 0;
   --font-family: "Pathway Gothic One", sans-serif;
 }
+/* themable part */
+
+/* ------------------------------------------------------------------------ */
 
 * {
   margin: 0;
@@ -68,13 +72,93 @@ body {
 }
 
 /* the header part */
-
 #header {
   grid-area: header;
   display: flex;
   justify-content: space-between;
 }
 
+ul {
+  display: flex;
+  list-style: none;
+  width: 137px;
+}
+
+li {
+  height: 100%;
+  width: 33.333333%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:hover {
+  background-color: var(--menu-hover);
+}
+
+li:hover:nth-child(3n) {
+  background-color: var(--hover-gray);
+}
+
+h1 {
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+/* the header part */
+
+/* ------------------------------------------------------------------------ */
+
+/* the upper result part */
+.standard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.stand {
+  margin-left: 5px;
+  margin-top: 7px;
+  font-size: 1.3em;
+  font-family: var(--font-family);
+}
+
+.up {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 18%;
+}
+
+.menu-icon {
+  width: 39px;
+  height: 39px;
+  padding: 10px;
+}
+
+.menu-icon:hover {
+  background-color: var(--menu-hover);
+  border-radius: var(--radius);
+}
+
+.history-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+}
+
+.history-icon-container:hover {
+  background-color: var(--menu-hover);
+}
+/* the upper result part */
+
+/* ------------------------------------------------------------------------ */
+
+/* the result part */
 #result {
   grid-area: result;
   display: flex;
@@ -82,6 +166,78 @@ body {
   justify-content: space-between;
 }
 
+.resultText {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  margin-right: 10px;
+  font-family: var(--font-family);
+}
+
+#previousText {
+  align-self: flex-end;
+  color: #b1afaf;
+  font-family: var(--font-family);
+}
+
+.currentText {
+  width: 100%;
+  padding-left: 4px;
+  border: none;
+  font-size: 2.5rem;
+  text-align: right;
+  font-family: var(--font-family);
+  background-color: transparent;
+}
+/* the result part */
+
+/* ------------------------------------------------------------------------ */
+
+/* M's part */
+.small {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-btn-ms {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  max-width: 350px;
+}
+
+.small-ms {
+  height: 90%;
+  width: 19%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
+  font-family: var(--font-family);
+  border: none;
+  background-color: transparent;
+}
+
+.active:hover {
+  background-color: var(--hover-gray);
+  border-radius: var(--radius);
+}
+
+.extera {
+  display: block;
+}
+
+button:hover:enabled {
+  background-color: var(--hover-gray);
+}
+/* M's part */
+
+/* ------------------------------------------------------------------------ */
+
+/* the buttons part */
 #buttons {
   grid-area: buttons;
   display: flex;
@@ -102,9 +258,41 @@ body {
   background-color: var(--dark-btn);
 }
 
+#buttons .bthide {
+  display: none;
+}
+
+.Btn {
+  width: 24.5%;
+  height: 16.1%;
+  border: none;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+}
+
+.Btn:hover {
+  background-color: var(--hover-gray);
+}
+
+.Btn:hover:nth-child(5n) {
+  background-color: var(--hover-gray);
+}
+/* the buttons part */
+
+/* ------------------------------------------------------------------------ */
+
+/* the history and memory part */
 #history,
 .bthide {
   display: none;
+}
+
+.his,
+.memory {
+  color: black;
 }
 
 .history-and-memory {
@@ -114,10 +302,6 @@ body {
   align-items: center;
   padding-left: 13px;
   font-family: var(--font-family);
-}
-
-button:hover:enabled {
-  background-color: var(--hover-gray);
 }
 
 .hidden-history,
@@ -138,8 +322,9 @@ button:hover:enabled {
   margin-left: 35px;
 }
 
-.memory:hover {
-  color: rgba(0, 0, 0, 0.4);
+.memory:hover,
+.his:hover {
+  color: var(--hover-gray);
 }
 
 .his {
@@ -147,15 +332,12 @@ button:hover:enabled {
   padding-bottom: 3px;
 }
 
-.his:hover {
-  color: rgba(0, 0, 0, 0.4);
-}
-
 #history a {
   text-decoration: none;
 }
 
-.text-history {
+.text-history,
+.text-memory {
   margin-top: 30px;
   margin-left: 8px;
   font-size: 0.9em;
@@ -216,21 +398,6 @@ button:hover:enabled {
   background-color: orange;
 }
 
-.para-add {
-  font-size: 15px;
-  width: 100%;
-  height: 20%;
-  text-align: right;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.result-add {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: right;
-  margin-top: 15px;
-}
-
 .delete-history {
   width: 30px;
   height: 40px;
@@ -264,160 +431,27 @@ button:hover:enabled {
   border-radius: var(--border);
 }
 
-#buttons .bthide {
+.history-save,
+.memory-save {
   display: none;
 }
+/* the history and memory part */
 
-.Btn {
-  width: 24.5%;
-  height: 16.1%;
-  border: none;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-family);
-}
+/* ------------------------------------------------------------------------ */
 
-.Btn:hover {
-  background-color: var(--hover-gray);
-}
-
-.Btn:hover:nth-child(5n) {
-  background-color: var(--hover-gray);
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  width: 137px;
-}
-
-li {
-  height: 100%;
-  width: 33.333333%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-li:hover {
-  background-color: var(--menu-hover);
-}
-
-li:hover:nth-child(3n) {
-  background-color: var(--hover-gray);
-}
-
-h1 {
-  font-family: var(--font-family);
-  font-size: 0.8rem;
-  margin-top: 8px;
-  margin-left: 10px;
-}
-
-.small {
+.para-add {
+  font-size: 15px;
   width: 100%;
-  height: 18%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.small-btn-ms {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: space-evenly;
-  max-width: 350px;
-}
-
-.small-ms {
-  height: 90%;
-  width: 19%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8em;
-  font-family: var(--font-family);
-  border: none;
-  background-color: transparent;
-}
-
-.active:hover {
-  background-color: var(--hover-gray);
-  border-radius: var(--radius);
-}
-
-.extera {
-  display: block;
-}
-
-.standard {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.resultText {
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column;
-  margin-right: 10px;
-  font-family: var(--font-family);
-}
-
-#previousText {
-  align-self: flex-end;
-  color: #b1afaf;
-  font-family: var(--font-family);
-}
-
-.currentText {
-  width: 100%;
-  padding-left: 4px;
-  border: none;
-  font-size: 2.5rem;
+  height: 20%;
   text-align: right;
-  font-family: var(--font-family);
-  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
 }
 
-.up {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 18%;
-}
-
-.history-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 100%;
-}
-
-.history-icon-container:hover {
-  background-color: var(--menu-hover);
-}
-
-.menu-icon {
-  width: 39px;
-  height: 39px;
-  padding: 10px;
-}
-
-.menu-icon:hover {
-  background-color: var(--menu-hover);
-  border-radius: var(--radius);
-}
-
-.stand {
-  margin-left: 5px;
-  margin-top: 7px;
-  font-size: 1.3em;
-  font-family: var(--font-family);
+.result-add {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 15px;
 }
 
 .first {
@@ -436,17 +470,9 @@ h1 {
   order: -4;
 }
 
-.history-save,
-.memory-save {
-  display: none;
-}
+/* ------------------------------------------------------------------------ */
 
-#menu:active {
-  background-color: var(--background);
-}
-
-/* drop down section */
-
+/* media */
 @media screen and (min-width: 500px) {
   #container {
     grid-template-columns: minmax(57%, auto) minmax(43%, 320px);
@@ -539,3 +565,4 @@ h1 {
     font-size: 1.5rem;
   }
 }
+/* media */
