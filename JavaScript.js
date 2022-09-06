@@ -3,7 +3,7 @@ class Calculator {
   constructor(
     displayValue,
     firstNumber,
-    waitingForSecondNumber,
+    interruption,
     operator,
     expression,
     prevOp,
@@ -11,7 +11,7 @@ class Calculator {
   ) {
     this.displayValue = displayValue;
     this.firstNumber = firstNumber;
-    this.waitingForSecondNumber = waitingForSecondNumber;
+    this.interruption = interruption;
     this.operator = operator;
     this.expression = expression;
     this.prevOp = prevOp;
@@ -21,10 +21,10 @@ class Calculator {
   inputNumbers = (number) => {
     this.prevNumber = null;
     const displayValue = this.displayValue;
-    const waitingForSecondNumber = this.waitingForSecondNumber;
-    if (waitingForSecondNumber === true) {
+    const interruption = this.interruption;
+    if (interruption === true) {
       this.displayValue = number;
-      this.waitingForSecondNumber = false;
+      this.interruption = false;
     } else {
       this.displayValue = displayValue == "0" ? number : displayValue + number;
     }
@@ -40,18 +40,18 @@ class Calculator {
         this.appendHistory(true);
       }
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
-      document.getElementById("previousText").innerHTML = "";
-      this.waitingForSecondNumber = false;
+      document.getElementById("previousNumber").innerHTML = "";
+      this.interruption = false;
     } else if (
       comingOperator != "=" &&
       this.displayValue != 0 &&
       !this.expression
     ) {
-      if (!(operator && this.waitingForSecondNumber)) {
-        const prevText = document.getElementById("previousText");
+      if (!(operator && this.interruption)) {
+        const prevText = document.getElementById("previousNumber");
         prevText.innerHTML += `${this.displayValue} ${comingOperator} `;
       } else {
-        const prevText = document.getElementById("previousText");
+        const prevText = document.getElementById("previousNumber");
         prevText.innerHTML = `${this.displayValue} ${comingOperator} `;
       }
       this.expression = false;
@@ -65,17 +65,17 @@ class Calculator {
         this.appendHistory(false);
       }
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
-      document.getElementById("previousText").innerHTML = "";
-      this.waitingForSecondNumber = true;
+      document.getElementById("previousNumber").innerHTML = "";
+      this.interruption = true;
       return;
     } else if (this.prevNumber) {
       document.getElementById(
-        "previousText"
+        "previousNumber"
       ).innerHTML = `${this.firstNumber} ${comingOperator}`;
       this.prevNumber = null;
     }
 
-    if (operator && this.waitingForSecondNumber) {
+    if (operator && this.interruption) {
       this.operator = comingOperator;
       return;
     }
@@ -87,7 +87,7 @@ class Calculator {
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       this.firstNumber = result;
     }
-    this.waitingForSecondNumber = true;
+    this.interruption = true;
     this.operator = comingOperator;
   };
 
@@ -113,13 +113,13 @@ class Calculator {
     const para = document.createElement("p");
     if (this.expression) {
       const node = document.createTextNode(
-        `${document.getElementById("previousText").innerHTML} =`
+        `${document.getElementById("previousNumber").innerHTML} =`
       );
       para.appendChild(node);
       this.expression = false;
     } else if (bool) {
       const node = document.createTextNode(
-        `${document.getElementById("previousText").innerHTML} ${
+        `${document.getElementById("previousNumber").innerHTML} ${
           this.displayValue
         } =`
       );
@@ -169,9 +169,9 @@ class Calculator {
   };
 
   inputDot = (decimal) => {
-    if (this.waitingForSecondNumber === true) {
+    if (this.interruption === true) {
       this.displayValue = "0.";
-      this.waitingForSecondNumber = false;
+      this.interruption = false;
       return;
     }
     if (!this.displayValue.includes(decimal)) {
@@ -180,7 +180,7 @@ class Calculator {
   };
 
   percentage = () => {
-    if (this.waitingForSecondNumber === false) {
+    if (this.interruption === false) {
       let number = this.displayValue;
       number = this.firstNumber * (this.displayValue / 100);
       number = parseFloat(number.toFixed(7));
@@ -194,9 +194,9 @@ class Calculator {
   fullClear = () => {
     this.displayValue = 0;
     this.firstNumber = null;
-    this.waitingForSecondNumber = false;
+    this.interruption = false;
     this.operator = null;
-    document.getElementById("previousText").innerHTML = "";
+    document.getElementById("previousNumber").innerHTML = "";
     this.expression = null;
     this.prevOp = null;
     this.prevNumber = null;
@@ -223,7 +223,7 @@ class Calculator {
       case "root":
         if (number > 1) {
           number = Math.sqrt(number);
-          document.getElementById("previousText").innerHTML =
+          document.getElementById("previousNumber").innerHTML =
             "&#8730" + " " + "(" + this.displayValue + ")";
           this.displayValue = parseFloat(number.toFixed(7));
           this.firstNumber = parseFloat(number.toFixed(7));
@@ -236,7 +236,7 @@ class Calculator {
         }
       case "pow2":
         number = Math.pow(number, 2);
-        document.getElementById("previousText").innerHTML =
+        document.getElementById("previousNumber").innerHTML =
           "sqr (" + this.displayValue + ")";
         this.displayValue = parseFloat(number.toFixed(7));
         this.firstNumber = parseFloat(number.toFixed(7));
@@ -244,7 +244,7 @@ class Calculator {
         return;
       case "pow3":
         number = Math.pow(number, 3);
-        document.getElementById("previousText").innerHTML =
+        document.getElementById("previousNumber").innerHTML =
           "cube (" + this.displayValue + ")";
         this.displayValue = parseFloat(number.toFixed(7));
         this.firstNumber = parseFloat(number.toFixed(7));
@@ -257,7 +257,7 @@ class Calculator {
           return;
         } else {
           number = 1 / number;
-          document.getElementById("previousText").innerHTML =
+          document.getElementById("previousNumber").innerHTML =
             "1/(" + this.displayValue + ")";
           this.displayValue = parseFloat(number.toFixed(7));
           this.firstNumber = parseFloat(number.toFixed(7));
@@ -312,7 +312,7 @@ class Calculator {
   };
 
   displayUpdate = () => {
-    const display = document.querySelector(".currentText");
+    const display = document.querySelector(".currentNumber");
     display.value = this.displayValue;
   };
 
@@ -397,7 +397,7 @@ x.addEventListener("change", myFunction2);
 
 // overflow-------------------------------
 
-var elem = document.getElementById("currentText");
+var elem = document.getElementById("currentNumber");
 elem.focus();
 elem.scrollLeft = elem.scrollWidth;
 
@@ -609,7 +609,9 @@ const memoryRecall = () => {
   const memoryDivs = document.querySelectorAll(".memory-container-div");
   let selected = memoryDivs[0].querySelector(".memory-div-result");
   calculator.displayValue = parseFloat(selected.innerHTML);
-  document.getElementById("currentText").value = parseFloat(selected.innerHTML);
+  document.getElementById("currentNumber").value = parseFloat(
+    selected.innerHTML
+  );
 };
 
 const OneMemory = (event) => {
