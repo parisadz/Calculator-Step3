@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="defult">
+<html lang="en" data-theme="default">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
+    <link rel="stylesheet" href="style.css" />
     <!-- start fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap"
@@ -21,14 +22,13 @@
       rel="stylesheet"
     />
     <!-- end fonts -->
-    <link rel="stylesheet" href="style.css" />
     <title>Calculator</title>
     <link
       rel="icon"
       href="https://img.icons8.com/fluency/48/000000/calculator.png"
     />
   </head>
-  <body>
+  <body onload="historyFunction()">
     <div id="container">
       <!-- start header -->
       <div id="header">
@@ -45,35 +45,60 @@
         <div class="up">
           <div class="standard">
             <img
-              class="menu"
+              class="menu-icon"
               src="https://img.icons8.com/material-outlined/24/000000/menu--v2.png"
             />
             <p class="stand">Standard</p>
-            <img
-              class="history-icon"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABnUlEQVRIid3Vv2oVURAG8N/1JmlCLCzuKwgaBAst/YOiIGosjIWpA4oIGrS1EgtBC32FNHkAnyCIRQQxicFobgSx0ioo/gHNtdhZ7rKeu7sXsYgfHA57vpn5zs4Mc/jfMYqLmMdrbOEbuljADMaaBuviaOF7Cm/Qq1kfMN1EoIcvOIa7hQCbuInDGEcH+3EFLwp2j9CuE+jhV+w/cRsjFT4tzMrS1sPjJgL5upOweYrFxPkRfA2/gekqC+TpStmkMKtfk2ThFxMi3SEEWvo1uTzoL+pQJQBXg1/4VwL7gl//W4HOAH5P8J9S5BM8U93LSxFgZYDIRPCfU85vg5ysEOhE8Fxkd4k/GNzL/GBXgXwee3FclPERJ7AaF9lb4o/Hvppyng715ZJwChM4VDprYy1inE05jeJ9GFyrEUhhLnzfqajj+TD6jpNDBD8jm0fbOFVn/KAgcl11utqySfsjfO43uU0LD/V7fg03ZEUdl3XOAdzCq4LdvSbBi7iADX/Op/LawOlhg+cYwSXZk7kum7BbsjacxzlDPJk7E78BiCOJMrCO34wAAAAASUVORK5CYII="
-              alt=""
-            />
+          </div>
+          <div class="history-icon-container">
+            <a href="#" onclick="showHistory()">
+              <img
+                class="history-icon"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABnUlEQVRIid3Vv2oVURAG8N/1JmlCLCzuKwgaBAst/YOiIGosjIWpA4oIGrS1EgtBC32FNHkAnyCIRQQxicFobgSx0ioo/gHNtdhZ7rKeu7sXsYgfHA57vpn5zs4Mc/jfMYqLmMdrbOEbuljADMaaBuviaOF7Cm/Qq1kfMN1EoIcvOIa7hQCbuInDGEcH+3EFLwp2j9CuE+jhV+w/cRsjFT4tzMrS1sPjJgL5upOweYrFxPkRfA2/gekqC+TpStmkMKtfk2ThFxMi3SEEWvo1uTzoL+pQJQBXg1/4VwL7gl//W4HOAH5P8J9S5BM8U93LSxFgZYDIRPCfU85vg5ysEOhE8Fxkd4k/GNzL/GBXgXwee3FclPERJ7AaF9lb4o/Hvppyng715ZJwChM4VDprYy1inE05jeJ9GFyrEUhhLnzfqajj+TD6jpNDBD8jm0fbOFVn/KAgcl11utqySfsjfO43uU0LD/V7fg03ZEUdl3XOAdzCq4LdvSbBi7iADX/Op/LawOlhg+cYwSXZk7kum7BbsjacxzlDPJk7E78BiCOJMrCO34wAAAAASUVORK5CYII="
+              />
+            </a>
           </div>
         </div>
         <!-- end upper result -->
         <!-- start result -->
-        <div class="output">
-          <div class="previous-operand" data-previous-operand></div>
-          <div class="current-operand" data-current-operand>
-            <p class="number">0</p>
-          </div>
+        <div class="resultText">
+          <span id="previousText"></span>
+          <input
+            class="currentText"
+            type="text"
+            value="0"
+            id="currentText"
+            readonly
+          />
         </div>
         <!-- end result -->
-        <!-- start M's -->
+        <!-- start M's part -->
         <div class="small">
           <div class="small-btn-ms">
-            <button class="small-ms" disabled>MC</button>
-            <button class="small-ms" disabled>MR</button>
-            <button class="small-ms active">M+</button>
-            <button class="small-ms active">M-</button>
-            <button class="small-ms active">MS</button>
-            <button class="small-ms active plus" disabled>
+            <button class="small-ms diactive1" disabled onclick="clearMemory()">
+              MC
+            </button>
+            <button
+              class="small-ms diactive2"
+              disabled
+              onclick="memoryRecall()"
+            >
+              MR
+            </button>
+            <button class="small-ms avtive active1" onclick="plusMemory()">
+              M+
+            </button>
+            <button class="small-ms avtive active2" onclick="minusMemory()">
+              M-
+            </button>
+            <button class="small-ms avtive active3" onclick="saveMemory()">
+              MS
+            </button>
+            <button
+              class="small-ms active extera"
+              disabled
+              onclick="showHiddenM()"
+            >
               M
               <sup class="extera-m"
                 ><img
@@ -82,102 +107,100 @@
             </button>
           </div>
         </div>
+        <!-- end M's part -->
       </div>
-      <!-- end M's -->
       <!-- start buttons -->
       <div id="buttons">
-        <button class="Btn dark fourth" value="percent" data-perecent>
+        <button class="Btn dark fourth percentage">
           <img
+            class="percent"
             src="https://img.icons8.com/metro/26/000000/percentage2--v1.png"
           />
         </button>
-        <button class="Btn dark">CE</button>
-        <button class="Btn dark" data-clear>C</button>
-        <button class="Btn dark" data-delete>
+        <button class="Btn dark line-clear">CE</button>
+        <button class="Btn dark clear" id="clear">C</button>
+        <button class="Btn dark single-clear" id="delete">
           <img
+            class="delete"
             src="https://img.icons8.com/material-outlined/24/000000/clear-symbol--v1.png"
           />
         </button>
-        <button class="Btn dark" data-operation>
-          ÷
-          <!-- <img src="https://img.icons8.com/small/30/undefined/divide.png" /> -->
-        </button>
-        <button class="Btn dark third" value="radical" data-radical>
+        <button class="Btn dark operations" value="/">
           <img
+            class="divide"
+            src="https://img.icons8.com/small/30/undefined/divide.png"
+          />
+        </button>
+        <button class="Btn dark third radical">
+          <img
+            class="root"
             src="https://img.icons8.com/ios-glyphs/30/000000/square-root.png"
           />
         </button>
-        <button class="Btn num" data-number>7</button>
-        <button class="Btn num" data-number>8</button>
-        <button class="Btn num" data-number>9</button>
-        <button class="Btn dark" data-operation>
-          ×
-          <!-- <img
-            src="https://img.icons8.com/material/24/000000/multiply--v1.png"
-          /> -->
-        </button>
-        <button class="Btn dark second" value="power2" data-power2>
-          &#x1D465;&#xb2;
-        </button>
-        <button class="Btn num" data-number>4</button>
-        <button class="Btn num" data-number>5</button>
-        <button class="Btn num" data-number>6</button>
-        <button class="Btn dark" data-operation>
-          -
-          <!-- <img
-            src="https://img.icons8.com/material-two-tone/24/000000/minus--v1.png"
-          /> -->
-        </button>
-        <button class="Btn dark btnhide" value="power3" data-power3>
-          &#x1D465;&#xb3;
-        </button>
-        <button class="Btn num" data-number>1</button>
-        <button class="Btn num" data-number>2</button>
-        <button class="Btn num" data-number>3</button>
-        <button class="Btn dark" data-operation>
-          +
-          <!-- <img
-            src="https://img.icons8.com/material/24/000000/plus-math--v2.png"
-          /> -->
-        </button>
-        <button class="Btn dark first" value="onedividex" data-onedividex>
+        <button class="Btn num" value="7">7</button>
+        <button class="Btn num" value="8">8</button>
+        <button class="Btn num" value="9">9</button>
+        <button class="Btn dark operations" value="*">
           <img
-            class="one-x"
-            src="assets\pictures\1x.png"
-            alt="1/x"
-            data-operation
+            class="multiply"
+            src="https://img.icons8.com/material/24/000000/multiply--v1.png"
           />
         </button>
-        <button class="Btn dark" value="plus-minus" data-plasminus>
+        <button class="Btn dark second x2">&#x1D465;&#xb2;</button>
+        <button class="Btn num" value="4">4</button>
+        <button class="Btn num" value="5">5</button>
+        <button class="Btn num" value="6">6</button>
+        <button class="Btn dark operations" value="-">
           <img
+            class="minus"
+            src="https://img.icons8.com/material-two-tone/24/000000/minus--v1.png"
+          />
+        </button>
+        <button class="Btn dark bthide x3">&#x1D465;&#xb3;</button>
+        <button class="Btn num" value="1">1</button>
+        <button class="Btn num" value="2">2</button>
+        <button class="Btn num" value="3">3</button>
+        <button class="Btn dark operations" value="+">
+          <img
+            class="plus"
+            src="https://img.icons8.com/material/24/000000/plus-math--v2.png"
+          />
+        </button>
+        <button class="Btn dark first 1/x">
+          <img class="one-x" src="assets\pictures\1x.png" alt="1/x" />
+        </button>
+        <button class="Btn dark p/m">
+          <img
+            class="plus-minus"
             src="https://img.icons8.com/fluency-systems-regular/28/undefined/plus-minus.png"
           />
         </button>
-        <button class="Btn num" data-number>0</button>
-        <button class="Btn dark" data-number>.</button>
-        <button class="Btn dark" data-equals>
-          =
-          <!-- <img
+        <button class="Btn num" value="0">0</button>
+        <button class="Btn dark decimal" value=".">.</button>
+        <button class="Btn dark operations" value="=">
+          <img
+            class="equal"
             src="https://img.icons8.com/material/24/000000/equal-sign--v1.png"
-          /> -->
+          />
         </button>
       </div>
       <!-- end buttons -->
       <!-- start history and memory -->
-      <div class="histoty-element" id="history">
+      <div id="history">
         <div class="history-and-memory">
-          <p class="his">History</p>
-          <p class="mem">Memory</p>
+          <a class="his" href="#"> History </a>
+          <a class="memory" href="#"> Memory </a>
         </div>
-        <div class="text-history">
-          <p>There's no history yet.</p>
-          <div class="trash">
-            <img src="https://img.icons8.com/ios/50/000000/trash--v1.png" />
-          </div>
-        </div>
+      </div>
+      <div class="lower-history history-save" id="history-elements">
+        <p class="text-history">There's no history yet.</p>
+      </div>
+      <div id="memory-save" class="memory-save">
+        <p class="text-memory">There's nothing saved in memory.</p>
       </div>
       <!-- end history and memory -->
     </div>
+    <script src="JavaScript.js"></script>
+    <script src="themable.js"></script>
   </body>
-  <script src="JavaScript.js"></script>
 </html>
