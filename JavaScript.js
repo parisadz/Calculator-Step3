@@ -84,7 +84,6 @@ class Calculator {
   };
 
   appendHistory = (bool) => {
-    // document.querySelector(".text-history").style.cssText = "display: none;";
     document.querySelector(".text-history").style.display = "none";
     const historyElem = document.getElementById("history-elements");
     const contDiv = document.createElement("div");
@@ -276,25 +275,7 @@ class Calculator {
 
   finalResult = (firstNumber, secondNumber, operator) => {
     switch (operator) {
-      case "+":
-        this.prevOp = "+";
-        if (!this.prevNumber) {
-          this.prevNumber = secondNumber;
-        }
-        return firstNumber + secondNumber;
-      case "-":
-        this.prevOp = "-";
-        if (!this.prevNumber) {
-          this.prevNumber = secondNumber;
-        }
-        return firstNumber - secondNumber;
-      case "*":
-        this.prevOp = "*";
-        if (!this.prevNumber) {
-          this.prevNumber = secondNumber;
-        }
-        return firstNumber * secondNumber;
-      case "/":
+      case "÷":
         if (!isFinite(firstNumber / secondNumber)) {
           alert("cannot divide to zero");
           this.fullClear();
@@ -303,8 +284,26 @@ class Calculator {
         if (!this.prevNumber) {
           this.prevNumber = secondNumber;
         }
-        this.prevOp = "/";
+        this.prevOp = "÷";
         return firstNumber / secondNumber;
+      case "×":
+        this.prevOp = "×";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber * secondNumber;
+      case "-":
+        this.prevOp = "-";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber - secondNumber;
+      case "+":
+        this.prevOp = "+";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber + secondNumber;
     }
     return secondNumber;
   };
@@ -314,8 +313,8 @@ class Calculator {
     display.value = this.displayValue;
   };
 
-  findButton = (event) => {
-    const target = event.target;
+  buttonClicked = (e) => {
+    const target = e.target;
     if (!target.matches("button")) {
       return;
     }
@@ -324,28 +323,8 @@ class Calculator {
       this.displayUpdate();
       return;
     }
-    if (target.classList.contains("decimal")) {
-      this.inputDot(target.value);
-      this.displayUpdate();
-      return;
-    }
-    if (target.classList.contains("clear")) {
-      this.fullClear();
-      this.displayUpdate();
-      return;
-    }
     if (target.classList.contains("percentage")) {
       this.percentage();
-      this.displayUpdate();
-      return;
-    }
-    if (target.classList.contains("single-clear")) {
-      this.singleClear();
-      this.displayUpdate();
-      return;
-    }
-    if (target.classList.contains("line-clear")) {
-      this.lineClear();
       this.displayUpdate();
       return;
     }
@@ -374,6 +353,26 @@ class Calculator {
       this.displayUpdate();
       return;
     }
+    if (target.classList.contains("decimal")) {
+      this.inputDot(target.value);
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("line-clear")) {
+      this.lineClear();
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("clear")) {
+      this.fullClear();
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("single-clear")) {
+      this.singleClear();
+      this.displayUpdate();
+      return;
+    }
     this.inputNumbers(target.value);
     this.displayUpdate();
   };
@@ -381,23 +380,21 @@ class Calculator {
 const calculator = new Calculator("0", null, false, null, false, null, null);
 
 const buttons = document.querySelector("#buttons");
-buttons.addEventListener("click", calculator.findButton);
+buttons.addEventListener("click", calculator.buttonClicked);
 calculator.displayUpdate();
 
 function myFunction2() {
-  document.querySelector(".memory-save").style.cssText =
-    "display: 'none !important';";
-  document.querySelector(".history-save").style.cssText =
-    "display: 'none !important';";
+  document.querySelector(".memory-save").style.display = "none !important";
+  document.querySelector(".history-save").style.display = "none !important";
 }
 let x = window.matchMedia("(max-width: 500px)");
 x.addEventListener("change", myFunction2);
 
 // overflow-------------------------------
 
-var elem = document.getElementById("currentNumber");
-elem.focus();
-elem.scrollLeft = elem.scrollWidth;
+var currentNumberElem = document.getElementById("currentNumber");
+currentNumberElem.focus();
+currentNumberElem.scrollLeft = currentNumberElem.scrollWidth;
 
 // --------------------------------------------------------------------
 // history and memory part
@@ -475,23 +472,23 @@ const showHiddenMemory = () => {
 };
 //----------- delete history--------------
 const historyElement = document.getElementById("history-elements");
-historyElement.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delete-history")) {
-    event.target.parentNode.remove();
+historyElement.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-history")) {
+    e.target.parentNode.remove();
     if (historyElement.childNodes.length < 5) {
-      document.querySelector(".text-history").style.cssText = "display: block;";
+      document.querySelector(".text-history").style.display = "block";
       document.querySelector(".trash-main").parentNode.remove();
     }
   }
-  if (event.target.classList.contains("trash-div")) {
+  if (e.target.classList.contains("trash-div")) {
     if (historyElement.childNodes.length > 3) {
       const historyQuery = document.querySelectorAll(".history-container-div");
       historyQuery.forEach((element) => {
         element.remove();
       });
     }
-    event.target.remove();
-    document.querySelector(".text-history").style.cssText = "display: block;";
+    e.target.remove();
+    document.querySelector(".text-history").style.display = "block";
   }
 });
 
@@ -533,7 +530,7 @@ const createMemoryElement = () => {
 };
 
 const saveMemory = () => {
-  document.querySelector(".text-memory").style.cssText = "display: none;";
+  document.querySelector(".text-memory").style.display = "none";
   createMemoryElement();
   const off1 = document.querySelector(".off1");
   const off2 = document.querySelector(".off2");
@@ -555,7 +552,7 @@ const clearHistory = () => {
       element.remove();
     });
   }
-  document.querySelector(".text-memory").style.cssText = "display: block;";
+  document.querySelector(".text-memory").style.display = "block";
 };
 
 const clearMemory = () => {
@@ -567,7 +564,7 @@ const clearMemory = () => {
       element.remove();
     });
   }
-  document.querySelector(".text-memory").style.cssText = "display: block;";
+  document.querySelector(".text-memory").style.display = "block";
   const off1 = document.querySelector(".off1");
   const off2 = document.querySelector(".off2");
   const sn = document.querySelector(".sn");
@@ -580,8 +577,8 @@ const clearMemory = () => {
 };
 
 const plusMemory = () => {
-  const memoryDivs = document.querySelectorAll(".memory-container-div");
   const savedNodes = document.querySelector(".memory-save");
+  const memoryDivs = document.querySelectorAll(".memory-container-div");
   if (savedNodes.childNodes.length > 3) {
     let selected = memoryDivs[0].querySelector(".memory-div-result");
     selected.innerHTML =
@@ -592,8 +589,8 @@ const plusMemory = () => {
 };
 
 const minusMemory = () => {
-  const memoryDivs = document.querySelectorAll(".memory-container-div");
   const savedNodes = document.querySelector(".memory-save");
+  const memoryDivs = document.querySelectorAll(".memory-container-div");
   if (savedNodes.childNodes.length > 3) {
     let selected = memoryDivs[0].querySelector(".memory-div-result");
     selected.innerHTML =
@@ -612,12 +609,11 @@ const memoryRecall = () => {
   );
 };
 
-const OneMemory = (event) => {
-  if (event.target.classList.contains("memories-buttons-md")) {
-    event.target.parentNode.parentNode.remove();
+const OneMemory = (e) => {
+  if (e.target.classList.contains("memories-buttons-md")) {
+    e.target.parentNode.parentNode.remove();
     if (document.querySelector(".memory-save").childNodes.length < 4) {
-      document.querySelector(".text-memory").style.cssText = "display: block;";
-      document.querySelector(".text-memory").style.cssText = "display: block;";
+      document.querySelector(".text-memory").style.display = "block";
       const off1 = document.querySelector(".off1");
       const off2 = document.querySelector(".off2");
       off1.disabled = true;
@@ -626,19 +622,19 @@ const OneMemory = (event) => {
       off2.classList.remove("on");
     }
   }
-  if (event.target.classList.contains("memories-buttons-mp")) {
+  if (e.target.classList.contains("memories-buttons-mp")) {
     const newValue =
-      event.target.parentNode.parentNode.querySelector(".memory-div-result");
+      e.target.parentNode.parentNode.querySelector(".memory-div-result");
     newValue.innerHTML =
       parseFloat(calculator.displayValue) + parseFloat(newValue.innerHTML);
   }
-  if (event.target.classList.contains("memories-buttons-mm")) {
+  if (e.target.classList.contains("memories-buttons-mm")) {
     const newValue2 =
-      event.target.parentNode.parentNode.querySelector(".memory-div-result");
+      e.target.parentNode.parentNode.querySelector(".memory-div-result");
     newValue2.innerHTML =
       parseFloat(newValue2.innerHTML) - parseFloat(calculator.displayValue);
   }
 };
 
 const memorySave = document.querySelector(".memory-save");
-memorySave.addEventListener("click", OneMemory);
+memorySave.addeListener("click", OneMemory);
