@@ -30,11 +30,11 @@ class Calculator {
     }
   };
 
-  inputOperators = (comingOperator) => {
+  inputOperators = (operators) => {
     const firstNumber = this.firstNumber;
     const operator = this.operator;
     const realValue = parseFloat(this.displayValue);
-    if (comingOperator == "=" && this.firstNumber && operator != "=") {
+    if (operators == "=" && this.firstNumber && operator != "=") {
       const result = this.finalResult(firstNumber, realValue, operator);
       if (result) {
         this.appendHistory(true);
@@ -42,24 +42,16 @@ class Calculator {
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       document.getElementById("previousNumber").innerHTML = "";
       this.interruption = false;
-    } else if (
-      comingOperator != "=" &&
-      this.displayValue != 0 &&
-      !this.expression
-    ) {
+    } else if (operators != "=" && this.displayValue != 0 && !this.expression) {
       if (!(operator && this.interruption)) {
         const prevText = document.getElementById("previousNumber");
-        prevText.innerHTML += `${this.displayValue} ${comingOperator} `;
+        prevText.innerHTML += `${this.displayValue} ${operators} `;
       } else {
         const prevText = document.getElementById("previousNumber");
-        prevText.innerHTML = `${this.displayValue} ${comingOperator} `;
+        prevText.innerHTML = `${this.displayValue} ${operators} `;
       }
       this.expression = false;
-    } else if (
-      comingOperator == "=" &&
-      this.operator == "=" &&
-      this.prevNumber
-    ) {
+    } else if (operators == "=" && this.operator == "=" && this.prevNumber) {
       const result = this.finalResult(realValue, this.prevNumber, this.prevOp);
       if (result) {
         this.appendHistory(false);
@@ -71,12 +63,12 @@ class Calculator {
     } else if (this.prevNumber) {
       document.getElementById(
         "previousNumber"
-      ).innerHTML = `${this.firstNumber} ${comingOperator}`;
+      ).innerHTML = `${this.firstNumber} ${operators}`;
       this.prevNumber = null;
     }
 
     if (operator && this.interruption) {
-      this.operator = comingOperator;
+      this.operator = operators;
       return;
     }
 
@@ -88,7 +80,7 @@ class Calculator {
       this.firstNumber = result;
     }
     this.interruption = true;
-    this.operator = comingOperator;
+    this.operator = operators;
   };
 
   appendHistory = (bool) => {
