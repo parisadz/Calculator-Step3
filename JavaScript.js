@@ -17,7 +17,7 @@ class Calculator {
     this.prevOp = prevOp;
     this.prevNumber = prevNumber;
   }
-
+  // ------------------------------input numbers and operators------------------------------
   inputNumbers = (number) => {
     this.prevNumber = null;
     const displayValue = this.displayValue;
@@ -35,9 +35,9 @@ class Calculator {
     const operator = this.operator;
     const realValue = parseFloat(this.displayValue);
     if (operators == "=" && this.firstNumber && operator != "=") {
-      const result = this.finalResult(firstNumber, realValue, operator);
+      const result = this.basicOperators(firstNumber, realValue, operator);
       if (result) {
-        this.appendHistory(true);
+        this.addToHistory(true);
       }
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       document.getElementById("previousNumber").innerHTML = "";
@@ -52,9 +52,13 @@ class Calculator {
       }
       this.expression = false;
     } else if (operators == "=" && this.operator == "=" && this.prevNumber) {
-      const result = this.finalResult(realValue, this.prevNumber, this.prevOp);
+      const result = this.basicOperators(
+        realValue,
+        this.prevNumber,
+        this.prevOp
+      );
       if (result) {
-        this.appendHistory(false);
+        this.addToHistory(false);
       }
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       document.getElementById("previousNumber").innerHTML = "";
@@ -75,15 +79,15 @@ class Calculator {
     if (firstNumber == null && !isNaN(realValue)) {
       this.firstNumber = realValue;
     } else if (operator) {
-      const result = this.finalResult(firstNumber, realValue, operator);
+      const result = this.basicOperators(firstNumber, realValue, operator);
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       this.firstNumber = result;
     }
     this.interruption = true;
     this.operator = operators;
   };
-
-  appendHistory = (bool) => {
+  // ------------------------------add to history------------------------------
+  addToHistory = (bool) => {
     document.querySelector(".text-history").style.display = "none";
     const historyElem = document.getElementById("history-elements");
     const contDiv = document.createElement("div");
@@ -100,7 +104,7 @@ class Calculator {
       trashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
       trashCanDiv.appendChild(trashCan);
     }
-
+    // ------------------------------create element p / node / para-add / para-result / node-result / delete-history------------------------------
     const para = document.createElement("p");
     if (this.expression) {
       const node = document.createTextNode(
@@ -128,7 +132,7 @@ class Calculator {
     if (bool) {
       const nodeResult = document.createTextNode(
         `${parseFloat(
-          this.finalResult(
+          this.basicOperators(
             parseFloat(this.firstNumber),
             parseFloat(this.displayValue),
             this.operator
@@ -139,7 +143,7 @@ class Calculator {
     } else {
       const nodeResult = document.createTextNode(
         `${parseFloat(
-          this.finalResult(
+          this.basicOperators(
             parseFloat(this.displayValue),
             this.prevNumber,
             this.prevOp
@@ -158,7 +162,7 @@ class Calculator {
     trashIcon.src = "https://img.icons8.com/ios/20/000000/delete--v2.png";
     deleteHistory.appendChild(trashIcon);
   };
-
+  // ------------------------------function decimal / percent / clear / currentClear / delete------------------------------
   inputDot = (decimal) => {
     if (this.interruption === true) {
       this.displayValue = "0.";
@@ -178,11 +182,11 @@ class Calculator {
       this.displayValue = number;
       return;
     } else {
-      this.fullClear();
+      this.clear();
     }
   };
 
-  fullClear = () => {
+  clear = () => {
     this.displayValue = 0;
     this.firstNumber = null;
     this.interruption = false;
@@ -193,11 +197,11 @@ class Calculator {
     this.prevNumber = null;
   };
 
-  lineClear = () => {
+  currentClear = () => {
     this.displayValue = 0;
   };
 
-  singleClear = () => {
+  delete = () => {
     const length = this.displayValue.length - 1;
     if (length == 0) {
       this.displayValue = 0;
@@ -207,8 +211,8 @@ class Calculator {
       this.displayValue = slicer.slice(0, length);
     }
   };
-
-  specialButtons = (action) => {
+  // ------------------------------function spicial operators------------------------------
+  specialOperators = (action) => {
     let number = this.displayValue;
     switch (action) {
       case "square":
@@ -225,7 +229,7 @@ class Calculator {
           alert(
             "❌(√) for negative numbers, zero and less than zero is not allowed.❌"
           );
-          this.fullClear();
+          this.clear();
           return;
         }
       case "pow2":
@@ -249,7 +253,7 @@ class Calculator {
       case "1/x":
         if (number == 0) {
           alert("❌You cannot divide one divided by zero.❌");
-          this.fullClear();
+          this.clear();
           return;
         } else {
           number = 1 / number;
@@ -272,13 +276,13 @@ class Calculator {
         return;
     }
   };
-
-  finalResult = (firstNumber, secondNumber, operator) => {
+  // ------------------------------function spicial operators------------------------------
+  basicOperators = (firstNumber, secondNumber, operator) => {
     switch (operator) {
       case "÷":
         if (!isFinite(firstNumber / secondNumber)) {
           alert("cannot divide to zero");
-          this.fullClear();
+          this.clear();
           return;
         }
         if (!this.prevNumber) {
@@ -307,12 +311,12 @@ class Calculator {
     }
     return secondNumber;
   };
-
+  // ------------------------------update the display------------------------------
   displayUpdate = () => {
     const display = document.querySelector(".currentNumber");
     display.value = this.displayValue;
   };
-
+  // ------------------------------which buttons is clicked------------------------------
   buttonClicked = (e) => {
     const target = e.target;
     if (!target.matches("button")) {
@@ -329,27 +333,27 @@ class Calculator {
       return;
     }
     if (target.classList.contains("radical")) {
-      this.specialButtons("square");
+      this.specialOperators("square");
       this.displayUpdate();
       return;
     }
     if (target.classList.contains("x2")) {
-      this.specialButtons("pow2");
+      this.specialOperators("pow2");
       this.displayUpdate();
       return;
     }
     if (target.classList.contains("x3")) {
-      this.specialButtons("pow3");
+      this.specialOperators("pow3");
       this.displayUpdate();
       return;
     }
     if (target.classList.contains("1/x")) {
-      this.specialButtons("1/x");
+      this.specialOperators("1/x");
       this.displayUpdate();
       return;
     }
     if (target.classList.contains("plus-minus")) {
-      this.specialButtons("plus-minus");
+      this.specialOperators("plus-minus");
       this.displayUpdate();
       return;
     }
@@ -358,18 +362,18 @@ class Calculator {
       this.displayUpdate();
       return;
     }
-    if (target.classList.contains("line-clear")) {
-      this.lineClear();
+    if (target.classList.contains("currentClear")) {
+      this.currentClear();
       this.displayUpdate();
       return;
     }
     if (target.classList.contains("clear")) {
-      this.fullClear();
+      this.clear();
       this.displayUpdate();
       return;
     }
-    if (target.classList.contains("single-clear")) {
-      this.singleClear();
+    if (target.classList.contains("delete")) {
+      this.delete();
       this.displayUpdate();
       return;
     }
@@ -390,15 +394,10 @@ function myFunction2() {
 let x = window.matchMedia("(max-width: 500px)");
 x.addEventListener("change", myFunction2);
 
-// overflow-------------------------------
-
 var currentNumberElem = document.getElementById("currentNumber");
 currentNumberElem.focus();
 currentNumberElem.scrollLeft = currentNumberElem.scrollWidth;
-
-// --------------------------------------------------------------------
-// history and memory part
-
+// ------------------------------history and memory------------------------------
 const memory = document.querySelector(".memory");
 const history = document.querySelector(".his");
 
@@ -470,7 +469,7 @@ const showHiddenMemory = () => {
     }
   }
 };
-//----------- delete history--------------
+// ------------------------------delete history-----------------------------
 const historyElement = document.getElementById("history-elements");
 historyElement.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-history")) {
@@ -491,8 +490,7 @@ historyElement.addEventListener("click", (e) => {
     document.querySelector(".text-history").style.display = "block";
   }
 });
-
-//--------------------- save memory----------------
+// ------------------------------save memory-----------------------------
 const createMemoryElement = () => {
   const memory = document.querySelector(".memory-save");
 
@@ -542,7 +540,7 @@ const saveMemory = () => {
   off2.disabled = false;
   off2.classList.add("on");
 };
-
+// ------------------------------clear history and memory------------------------------
 const clearHistory = () => {
   const saved = document.querySelector(".memory-save");
   if (saved.childNodes.length > 3) {
@@ -575,7 +573,7 @@ const clearMemory = () => {
   off2.disabled = true;
   off2.classList.remove("on");
 };
-
+// ------------------------------small buttons in memory------------------------------
 const plusMemory = () => {
   const savedNodes = document.querySelector(".memory-save");
   const memoryDivs = document.querySelectorAll(".memory-container-div");
