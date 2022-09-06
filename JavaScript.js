@@ -215,50 +215,54 @@ class Calculator {
       case "square":
         if (number > 1) {
           number = Math.sqrt(number);
-          document.getElementById("previousNumber").innerHTML =
-            "√" + "(" + this.displayValue + ")";
+          document.getElementById(
+            "previousNumber"
+          ).innerHTML = `√(${this.displayValue})`;
           this.displayValue = parseFloat(number.toFixed(7));
           this.firstNumber = parseFloat(number.toFixed(7));
           this.expression = true;
           return;
         } else {
           alert(
-            "√ for negative numbers, zero and less than zero is not allowed"
+            "❌(√) for negative numbers, zero and less than zero is not allowed.❌"
           );
           this.fullClear();
           return;
         }
       case "pow2":
         number = Math.pow(number, 2);
-        document.getElementById("previousNumber").innerHTML =
-          "sqr(" + this.displayValue + ")";
+        document.getElementById(
+          "previousNumber"
+        ).innerHTML = `sqr(${this.displayValue})`;
         this.displayValue = parseFloat(number.toFixed(7));
         this.firstNumber = parseFloat(number.toFixed(7));
         this.expression = true;
         return;
       case "pow3":
         number = Math.pow(number, 3);
-        document.getElementById("previousNumber").innerHTML =
-          "cube (" + this.displayValue + ")";
+        document.getElementById(
+          "previousNumber"
+        ).innerHTML = `cube(${this.displayValue})`;
         this.displayValue = parseFloat(number.toFixed(7));
         this.firstNumber = parseFloat(number.toFixed(7));
         this.expression = true;
         return;
       case "1/x":
         if (number == 0) {
-          alert("cannot divide number to zero");
+          alert("❌You cannot divide one divided by zero.❌");
           this.fullClear();
           return;
         } else {
           number = 1 / number;
-          document.getElementById("previousNumber").innerHTML =
-            "1/(" + this.displayValue + ")";
+          document.getElementById(
+            "previousNumber"
+          ).innerHTML = `1/(${this.displayValue})`;
           this.displayValue = parseFloat(number.toFixed(7));
           this.firstNumber = parseFloat(number.toFixed(7));
           this.expression = true;
           return;
         }
-      case "p/m":
+      case "plus-minus":
         if (number > 0) {
           number = -Math.abs(number);
         } else {
@@ -365,8 +369,8 @@ class Calculator {
       this.displayUpdate();
       return;
     }
-    if (target.classList.contains("p/m")) {
-      this.specialButtons("p/m");
+    if (target.classList.contains("plus-minus")) {
+      this.specialButtons("plus-minus");
       this.displayUpdate();
       return;
     }
