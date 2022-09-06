@@ -84,7 +84,8 @@ class Calculator {
   };
 
   appendHistory = (bool) => {
-    document.querySelector(".text-history").style.cssText = "display: none;";
+    // document.querySelector(".text-history").style.cssText = "display: none;";
+    document.querySelector(".text-history").style.display = "none";
     const historyElem = document.getElementById("history-elements");
     const contDiv = document.createElement("div");
     contDiv.className = "history-container-div";
@@ -98,7 +99,6 @@ class Calculator {
       const trashCan = document.createElement("img");
       trashCan.className = "trash-main";
       trashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
-
       trashCanDiv.appendChild(trashCan);
     }
 
@@ -152,12 +152,12 @@ class Calculator {
     paraResult.className = "result-add";
     contDiv.appendChild(paraResult);
 
-    const deleteSqr = document.createElement("div");
-    deleteSqr.className = "delete-history";
-    contDiv.appendChild(deleteSqr);
+    const deleteHistory = document.createElement("div");
+    deleteHistory.className = "delete-history";
+    contDiv.appendChild(deleteHistory);
     const trashIcon = document.createElement("img");
     trashIcon.src = "https://img.icons8.com/ios/20/000000/delete--v2.png";
-    deleteSqr.appendChild(trashIcon);
+    deleteHistory.appendChild(trashIcon);
   };
 
   inputDot = (decimal) => {
