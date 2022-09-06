@@ -1,576 +1,638 @@
-/* themable part */
-:root[data-theme="default"] {
-  --background: #f3f3f3;
-  --dark-btn: #e8e8e8;
-  --num-btn: #fdfdfd;
-  --hover-gray: #e1e1e1;
-  --menu-hover: #e3e3e3;
-  --radius: 0;
-  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-:root[data-theme="green"] {
-  --background: #bdf77a;
-  --dark-btn: #53bf3e;
-  --num-btn: #c4f13a;
-  --hover-gray: #33721b;
-  --menu-hover: #33721b;
-  --radius: 15px;
-  --font-family: "Inconsolata", monospace;
-}
-
-:root[data-theme="blue"] {
-  --background: #68fcfc;
-  --dark-btn: #57a9ca;
-  --num-btn: #7fc0eb;
-  --hover-gray: #08639f;
-  --menu-hover: #2166ef;
-  --radius: 15px 0 15px 0;
-  --font-family: "Kalam", cursive;
-}
-
-:root[data-theme="purple"] {
-  --background: #cd51d8;
-  --dark-btn: #6b136b;
-  --num-btn: #f04df0;
-  --hover-gray: #530053;
-  --menu-hover: #530053;
-  --radius: 10px 10px 10px 0;
-  --font-family: "Pathway Gothic One", sans-serif;
-}
-/* themable part */
-
-/* ------------------------------------------------------------------------ */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: var(--font-family);
-}
-
-html,
-body {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: var(--background);
-}
-
-#container {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: minmax(300px, 100%);
-  grid-template-rows: minmax(33px, 4%) minmax(120px, 33%) minmax(257px, 62%);
-  grid-template-areas:
-    "header"
-    "result"
-    "buttons";
-  overflow-y: auto;
-  overflow-x: auto;
-}
-
-/* the header part */
-#header {
-  grid-area: header;
-  display: flex;
-  justify-content: space-between;
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  width: 137px;
-}
-
-li {
-  height: 100%;
-  width: 33.333333%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-li:hover {
-  background-color: var(--menu-hover);
-}
-
-li:hover:nth-child(3n) {
-  background-color: var(--hover-gray);
-}
-
-h1 {
-  font-family: var(--font-family);
-  font-size: 0.8rem;
-  margin-top: 8px;
-  margin-left: 10px;
-}
-/* the header part */
-
-/* ------------------------------------------------------------------------ */
-
-/* the upper result part */
-.standard {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.stand {
-  margin-left: 5px;
-  margin-top: 7px;
-  font-size: 1.3em;
-  font-family: var(--font-family);
-}
-
-.up {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 18%;
-}
-
-.menu-icon {
-  width: 39px;
-  height: 39px;
-  padding: 10px;
-}
-
-.menu-icon:hover {
-  background-color: var(--menu-hover);
-  border-radius: var(--radius);
-}
-
-.history-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 100%;
-}
-
-.history-icon-container:hover {
-  background-color: var(--menu-hover);
-}
-/* the upper result part */
-
-/* ------------------------------------------------------------------------ */
-
-/* the result part */
-#result {
-  grid-area: result;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.resultText {
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column;
-  margin-right: 10px;
-  font-family: var(--font-family);
-}
-
-#previousNumber {
-  align-self: flex-end;
-  color: #b1afaf;
-  font-family: var(--font-family);
-}
-
-.currentNumber {
-  width: 100%;
-  padding-left: 4px;
-  border: none;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: right;
-  font-family: var(--font-family);
-  background-color: transparent;
-  resize: none;
-  outline: none;
-}
-/* the result part */
-
-/* ------------------------------------------------------------------------ */
-
-/* M's part */
-.small {
-  width: 100%;
-  height: 18%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.small-btn-ms {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: space-evenly;
-  max-width: 350px;
-}
-
-.small-ms {
-  height: 90%;
-  width: 19%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8em;
-  font-family: var(--font-family);
-  border: none;
-  background-color: transparent;
-}
-
-.active:hover {
-  background-color: var(--hover-gray);
-  border-radius: var(--radius);
-}
-
-.extera {
-  display: block;
-}
-
-button:hover:enabled {
-  background-color: var(--hover-gray);
-}
-/* M's part */
-
-/* ------------------------------------------------------------------------ */
-
-/* the buttons part */
-#buttons {
-  grid-area: buttons;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.Btn img {
-  width: 22px;
-  height: 22px;
-}
-
-.num {
-  background-color: var(--num-btn);
-}
-
-.dark {
-  background-color: var(--dark-btn);
-}
-
-#buttons .bthide {
-  display: none;
-}
-
-.Btn {
-  width: 24.5%;
-  height: 16.1%;
-  border: none;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-family);
-}
-
-.Btn:hover {
-  background-color: var(--hover-gray);
-}
-
-.Btn:hover:nth-child(5n) {
-  background-color: var(--hover-gray);
-}
-/* the buttons part */
-
-/* ------------------------------------------------------------------------ */
-
-/* the history and memory part */
-#history,
-.bthide {
-  display: none;
-}
-
-.his,
-.memory {
-  color: black;
-}
-
-.history-and-memory {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-left: 13px;
-  font-family: var(--font-family);
-}
-
-.hidden-history,
-.hidden-memory {
-  position: absolute;
-  overflow: auto;
-  width: 100%;
-  height: 62%;
-  min-height: 240px;
-  z-index: -1;
-  top: 38%;
-  background-color: var(--background);
-}
-
-.memory {
-  margin-top: 4px;
-  border-bottom: 3px solid orange;
-  margin-left: 35px;
-}
-
-.memory:hover,
-.his:hover {
-  color: var(--hover-gray);
-}
-
-.his {
-  margin-top: 7px;
-  padding-bottom: 3px;
-}
-
-#history a {
-  text-decoration: none;
-}
-
-.text-history,
-.text-memory {
-  margin-top: 30px;
-  margin-left: 8px;
-  font-size: 0.9em;
-  font-weight: 600;
-}
-
-.history-container-div {
-  background-color: var(--background);
-  position: relative;
-  width: 100%;
-  height: 100px;
-  padding: 20px;
-}
-
-.history-container-div:hover {
-  background-color: var(--hover-gray);
-}
-
-.memory-container-div {
-  background-color: var(--background);
-  position: relative;
-  width: 100%;
-  height: 80px;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.memory-container-div:hover {
-  background-color: var(--hover-gray);
-}
-
-.memory-div-result {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: right;
-}
-
-.memory-div {
-  position: absolute;
-  top: 45px;
-  width: 150px;
-  height: 30px;
-  right: 10px;
-  display: flex;
-  justify-content: space-around;
-  display: block;
-}
-
-.memorory-btn-Mdelete,
-.memorory-btn-Mplus,
-.memorory-btn-Mminus {
-  border: none;
-  width: 32%;
-  height: 100%;
-}
-
-.memory-div button:hover {
-  background-color: orange;
-}
-
-.delete-history {
-  width: 30px;
-  height: 40px;
-  position: absolute;
-  top: 10px;
-  left: 50px;
-  background-color: var(--background);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.delete-history:hover {
-  background-color: #898989;
-}
-
-.trash-div {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 10px;
-  right: 10px;
-  width: 20px;
-  height: 20px;
-  padding: 20px;
-}
-
-.trash-div:hover {
-  background-color: var(--hover-gray);
-  border-radius: var(--border);
-}
-
-.trash-main {
-  width: 20px;
-  height: 20px;
-}
-
-.history-save,
-.memory-save {
-  display: none;
-}
-/* the history and memory part */
-
-/* ------------------------------------------------------------------------ */
-
-.para-add {
-  font-size: 15px;
-  width: 100%;
-  height: 20%;
-  text-align: right;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.result-add {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: right;
-  margin-top: 15px;
-}
-
-.first {
-  order: -1;
-}
-
-.second {
-  order: -2;
-}
-
-.third {
-  order: -3;
-}
-
-.fourth {
-  order: -4;
-}
-
-/* ------------------------------------------------------------------------ */
-
-/* media */
-@media screen and (min-width: 500px) {
-  #container {
-    grid-template-columns: minmax(57%, auto) minmax(43%, 320px);
-    grid-template-areas:
-      "header header"
-      "result history"
-      "buttons history";
+"use strict";
+class Calculator {
+  constructor(
+    displayValue,
+    firstNumber,
+    interruption,
+    operator,
+    expression,
+    prevOp,
+    prevNumber
+  ) {
+    this.displayValue = displayValue;
+    this.firstNumber = firstNumber;
+    this.interruption = interruption;
+    this.operator = operator;
+    this.expression = expression;
+    this.prevOp = prevOp;
+    this.prevNumber = prevNumber;
+  }
+  // ------------------------------input numbers and operators------------------------------
+  inputNumbers = (number) => {
+    this.prevNumber = null;
+    const displayValue = this.displayValue;
+    const interruption = this.interruption;
+    if (interruption === true) {
+      this.displayValue = number;
+      this.interruption = false;
+    } else {
+      this.displayValue = displayValue == "0" ? number : displayValue + number;
+    }
+  };
+
+  inputOperators = (operators) => {
+    const firstNumber = this.firstNumber;
+    const operator = this.operator;
+    const realValue = parseFloat(this.displayValue);
+    if (operators == "=" && this.firstNumber && operator != "=") {
+      const result = this.basicOperators(firstNumber, realValue, operator);
+      if (result) {
+        this.addToHistory(true);
+      }
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
+      document.getElementById("previousNumber").innerHTML = "";
+      this.interruption = false;
+    } else if (operators != "=" && this.displayValue != 0 && !this.expression) {
+      if (!(operator && this.interruption)) {
+        const prevText = document.getElementById("previousNumber");
+        prevText.innerHTML += `${this.displayValue} ${operators} `;
+      } else {
+        const prevText = document.getElementById("previousNumber");
+        prevText.innerHTML = `${this.displayValue} ${operators} `;
+      }
+      this.expression = false;
+    } else if (operators == "=" && this.operator == "=" && this.prevNumber) {
+      const result = this.basicOperators(
+        realValue,
+        this.prevNumber,
+        this.prevOp
+      );
+      if (result) {
+        this.addToHistory(false);
+      }
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
+      document.getElementById("previousNumber").innerHTML = "";
+      this.interruption = true;
+      return;
+    } else if (this.prevNumber) {
+      document.getElementById(
+        "previousNumber"
+      ).innerHTML = `${this.firstNumber} ${operators}`;
+      this.prevNumber = null;
+    }
+
+    if (operator && this.interruption) {
+      this.operator = operators;
+      return;
+    }
+
+    if (firstNumber == null && !isNaN(realValue)) {
+      this.firstNumber = realValue;
+    } else if (operator) {
+      const result = this.basicOperators(firstNumber, realValue, operator);
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
+      this.firstNumber = result;
+    }
+    this.interruption = true;
+    this.operator = operators;
+  };
+  // ------------------------------add to history------------------------------
+  addToHistory = (bool) => {
+    document.querySelector(".text-history").style.display = "none";
+    const historyElem = document.getElementById("history-elements");
+    const contDiv = document.createElement("div");
+    contDiv.className = "history-container-div";
+    if (historyElem.childNodes.length > 3) {
+      historyElem.insertBefore(contDiv, historyElem.firstChild);
+    } else {
+      historyElem.appendChild(contDiv);
+      const trashCanDiv = document.createElement("div");
+      trashCanDiv.className = "trash-div";
+      historyElem.appendChild(trashCanDiv);
+      const trashCan = document.createElement("img");
+      trashCan.className = "trash-main";
+      trashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
+      trashCanDiv.appendChild(trashCan);
+    }
+    // ------------------------------create element p / node / para-add / para-result / node-result / delete-history------------------------------
+    const para = document.createElement("p");
+    if (this.expression) {
+      const node = document.createTextNode(
+        `${document.getElementById("previousNumber").innerHTML} =`
+      );
+      para.appendChild(node);
+      this.expression = false;
+    } else if (bool) {
+      const node = document.createTextNode(
+        `${document.getElementById("previousNumber").innerHTML} ${
+          this.displayValue
+        } =`
+      );
+      para.appendChild(node);
+    } else {
+      const node = document.createTextNode(
+        `${this.displayValue} ${this.prevOp} ${this.prevNumber} =`
+      );
+      para.appendChild(node);
+    }
+    para.className = "para-add";
+    contDiv.appendChild(para);
+
+    const paraResult = document.createElement("div");
+    if (bool) {
+      const nodeResult = document.createTextNode(
+        `${parseFloat(
+          this.basicOperators(
+            parseFloat(this.firstNumber),
+            parseFloat(this.displayValue),
+            this.operator
+          ).toFixed(7)
+        )}`
+      );
+      paraResult.appendChild(nodeResult);
+    } else {
+      const nodeResult = document.createTextNode(
+        `${parseFloat(
+          this.basicOperators(
+            parseFloat(this.displayValue),
+            this.prevNumber,
+            this.prevOp
+          ).toFixed(7)
+        )}`
+      );
+      paraResult.appendChild(nodeResult);
+    }
+    paraResult.className = "result-add";
+    contDiv.appendChild(paraResult);
+
+    const deleteHistory = document.createElement("div");
+    deleteHistory.className = "delete-history";
+    contDiv.appendChild(deleteHistory);
+    const trashIcon = document.createElement("img");
+    trashIcon.src = "https://img.icons8.com/ios/20/000000/delete--v2.png";
+    deleteHistory.appendChild(trashIcon);
+  };
+  // ------------------------------function decimal / percent / clear / currentClear / delete------------------------------
+  inputDot = (decimal) => {
+    if (this.interruption === true) {
+      this.displayValue = "0.";
+      this.interruption = false;
+      return;
+    }
+    if (!this.displayValue.includes(decimal)) {
+      this.displayValue += decimal;
+    }
+  };
+
+  percentage = () => {
+    if (this.interruption === false) {
+      let number = this.displayValue;
+      number = this.firstNumber * (this.displayValue / 100);
+      number = parseFloat(number.toFixed(7));
+      this.displayValue = number;
+      return;
+    } else {
+      this.clear();
+    }
+  };
+
+  clear = () => {
+    this.displayValue = 0;
+    this.firstNumber = null;
+    this.interruption = false;
+    this.operator = null;
+    document.getElementById("previousNumber").innerHTML = "";
+    this.expression = null;
+    this.prevOp = null;
+    this.prevNumber = null;
+  };
+
+  currentClear = () => {
+    this.displayValue = 0;
+  };
+
+  delete = () => {
+    const length = this.displayValue.length - 1;
+    if (length == 0) {
+      this.displayValue = 0;
+      this.displayUpdate();
+    } else {
+      const slicer = this.displayValue;
+      this.displayValue = slicer.slice(0, length);
+    }
+  };
+  // ------------------------------function spicial operators------------------------------
+  specialOperators = (action) => {
+    let number = this.displayValue;
+    switch (action) {
+      case "square":
+        if (number > 1) {
+          number = Math.sqrt(number);
+          document.getElementById(
+            "previousNumber"
+          ).innerHTML = `√(${this.displayValue})`;
+          this.displayValue = parseFloat(number.toFixed(7));
+          this.firstNumber = parseFloat(number.toFixed(7));
+          this.expression = true;
+          return;
+        } else {
+          alert(
+            "❌(√) for negative numbers, zero and less than zero is not allowed.❌"
+          );
+          this.clear();
+          return;
+        }
+      case "pow2":
+        number = Math.pow(number, 2);
+        document.getElementById(
+          "previousNumber"
+        ).innerHTML = `sqr(${this.displayValue})`;
+        this.displayValue = parseFloat(number.toFixed(7));
+        this.firstNumber = parseFloat(number.toFixed(7));
+        this.expression = true;
+        return;
+      case "pow3":
+        number = Math.pow(number, 3);
+        document.getElementById(
+          "previousNumber"
+        ).innerHTML = `cube(${this.displayValue})`;
+        this.displayValue = parseFloat(number.toFixed(7));
+        this.firstNumber = parseFloat(number.toFixed(7));
+        this.expression = true;
+        return;
+      case "1/x":
+        if (number == 0) {
+          alert("❌You cannot divide one divided by zero.❌");
+          this.clear();
+          return;
+        } else {
+          number = 1 / number;
+          document.getElementById(
+            "previousNumber"
+          ).innerHTML = `1/(${this.displayValue})`;
+          this.displayValue = parseFloat(number.toFixed(7));
+          this.firstNumber = parseFloat(number.toFixed(7));
+          this.expression = true;
+          return;
+        }
+      case "plus-minus":
+        if (number > 0) {
+          number = -Math.abs(number);
+        } else {
+          number = Math.abs(number);
+        }
+        this.displayValue = parseFloat(number.toFixed(7));
+        this.firstNumber = parseFloat(number.toFixed(7));
+        return;
+    }
+  };
+  // ------------------------------function spicial operators------------------------------
+  basicOperators = (firstNumber, secondNumber, operator) => {
+    switch (operator) {
+      case "÷":
+        if (!isFinite(firstNumber / secondNumber)) {
+          alert("cannot divide to zero");
+          this.clear();
+          return;
+        }
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        this.prevOp = "÷";
+        return firstNumber / secondNumber;
+      case "×":
+        this.prevOp = "×";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber * secondNumber;
+      case "-":
+        this.prevOp = "-";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber - secondNumber;
+      case "+":
+        this.prevOp = "+";
+        if (!this.prevNumber) {
+          this.prevNumber = secondNumber;
+        }
+        return firstNumber + secondNumber;
+    }
+    return secondNumber;
+  };
+  // ------------------------------update the display------------------------------
+  displayUpdate = () => {
+    const display = document.querySelector(".currentNumber");
+    display.value = this.displayValue;
+  };
+  // ------------------------------which buttons is clicked------------------------------
+  buttonClicked = (e) => {
+    const target = e.target;
+    if (!target.matches("button")) {
+      return;
+    }
+    if (target.classList.contains("operations")) {
+      this.inputOperators(target.value);
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("percentage")) {
+      this.percentage();
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("radical")) {
+      this.specialOperators("square");
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("x2")) {
+      this.specialOperators("pow2");
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("x3")) {
+      this.specialOperators("pow3");
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("1/x")) {
+      this.specialOperators("1/x");
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("plus-minus")) {
+      this.specialOperators("plus-minus");
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("decimal")) {
+      this.inputDot(target.value);
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("currentClear")) {
+      this.currentClear();
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("clear")) {
+      this.clear();
+      this.displayUpdate();
+      return;
+    }
+    if (target.classList.contains("delete")) {
+      this.delete();
+      this.displayUpdate();
+      return;
+    }
+    this.inputNumbers(target.value);
+    this.displayUpdate();
+  };
+}
+const calculator = new Calculator("0", null, false, null, false, null, null);
+
+const buttons = document.querySelector("#buttons");
+buttons.addEventListener("click", calculator.buttonClicked);
+calculator.displayUpdate();
+
+function myFunction2() {
+  document.querySelector(".memory-save").style.display = "none !important";
+  document.querySelector(".history-save").style.display = "none !important";
+}
+let x = window.matchMedia("(max-width: 500px)");
+x.addEventListener("change", myFunction2);
+
+var currentNumberElem = document.getElementById("currentNumber");
+currentNumberElem.focus();
+currentNumberElem.scrollLeft = currentNumberElem.scrollWidth;
+// ------------------------------history and memory------------------------------
+const memory = document.querySelector(".memory");
+const history = document.querySelector(".his");
+
+const memoryFunction = () => {
+  memory.style.borderBottom = "3px solid orange";
+  memory.style.paddingBottom = "3px";
+  history.style.border = "none";
+  history.style.padding = "0";
+  document.querySelector(".memory-save").style.display = "block";
+};
+
+const historyFunction = () => {
+  history.style.borderBottom = "3px solid orange";
+  history.style.paddingBottom = "3px";
+  memory.style.border = "none";
+  memory.style.padding = "0";
+  document.querySelector(".memory-save").style.display = "none";
+};
+
+memory.addEventListener("click", memoryFunction);
+history.addEventListener("click", historyFunction);
+
+const showHistory = () => {
+  const hiddenHistory = document.querySelector(".lower-history");
+  hiddenHistory.classList.add("hidden-history");
+  let number = 10;
+  number = document.querySelector(".memory-save").style.zIndex;
+  if (hiddenHistory.style.zIndex > 0) {
+    hiddenHistory.style.zIndex = -1;
+  } else {
+    hiddenHistory.style.display = "block";
+    if (number != -1) {
+      hiddenHistory.style.zIndex = number + 1;
+    } else {
+      hiddenHistory.style.zIndex = 10;
+    }
+  }
+};
+
+const showHiddenMemory = () => {
+  const diactive1 = document.querySelector(".diactive1");
+  const diactive2 = document.querySelector(".diactive2");
+  const active1 = document.querySelector(".active1");
+  const active2 = document.querySelector(".active2");
+  const active3 = document.querySelector(".active3");
+  let z_index = 1;
+  z_index = document.querySelector(".lower-history").style.zIndex;
+  const hiddenMemory = document.querySelector(".memory-save");
+  hiddenMemory.classList.add("hidden-memory");
+
+  if (hiddenMemory.style.zIndex > 0) {
+    diactive1.disabled = false;
+    diactive2.disabled = false;
+    active1.disabled = false;
+    active2.disabled = false;
+    active3.disabled = false;
+    hiddenMemory.style.zIndex = -1;
+  } else {
+    diactive1.disabled = true;
+    diactive2.disabled = true;
+    active1.disabled = true;
+    active2.disabled = true;
+    active3.disabled = true;
+    hiddenMemory.style.display = "block";
+    if (z_index != -1) {
+      hiddenMemory.style.zIndex = z_index + 1;
+    } else {
+      hiddenMemory.style.zIndex = 10;
+    }
+  }
+};
+// ------------------------------delete history-----------------------------
+const historyElement = document.getElementById("history-elements");
+historyElement.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-history")) {
+    e.target.parentNode.remove();
+    if (historyElement.childNodes.length < 5) {
+      document.querySelector(".text-history").style.display = "block";
+      document.querySelector(".trash-main").parentNode.remove();
+    }
+  }
+  if (e.target.classList.contains("trash-div")) {
+    if (historyElement.childNodes.length > 3) {
+      const historyQuery = document.querySelectorAll(".history-container-div");
+      historyQuery.forEach((element) => {
+        element.remove();
+      });
+    }
+    e.target.remove();
+    document.querySelector(".text-history").style.display = "block";
+  }
+});
+// ------------------------------save memory-----------------------------
+const createMemoryElement = () => {
+  const memory = document.querySelector(".memory-save");
+
+  const contMem = document.createElement("div");
+  contMem.className = "memory-container-div";
+  if (memory.childNodes.length > 3) {
+    memory.insertBefore(contMem, memory.firstChild);
+  } else {
+    memory.appendChild(contMem);
   }
 
-  .Btn {
-    font-family: var(--font-family);
-    font-size: 1rem;
-  }
+  const memoryPara = document.createElement("p");
+  memoryPara.className = "memory-div-result";
+  memoryPara.innerHTML = calculator.displayValue;
+  contMem.appendChild(memoryPara);
 
-  #history {
-    display: block;
-    grid-area: history;
-  }
+  const contDiv = document.createElement("div");
+  contDiv.className = "memory-div";
+  contMem.appendChild(contDiv);
 
-  .extera {
-    display: none;
-  }
+  const smallButtons1 = document.createElement("button");
+  smallButtons1.className = "memorory-btn-Mdelete";
+  smallButtons1.innerHTML = "MC";
+  contDiv.appendChild(smallButtons1);
 
-  .history-icon {
-    display: none;
-  }
+  const smallButtons2 = document.createElement("button");
+  smallButtons2.className = "memorory-btn-Mplus";
+  smallButtons2.innerHTML = "M+";
+  contDiv.appendChild(smallButtons2);
 
-  .small-btn-ms {
-    width: 100%;
-    max-width: 400px;
-  }
+  const smallButtons3 = document.createElement("button");
+  smallButtons3.className = "memorory-btn-Mminus";
+  smallButtons3.innerHTML = "M-";
+  contDiv.appendChild(smallButtons3);
+};
 
-  .history-icon-container {
-    display: none;
+const saveMemory = () => {
+  document.querySelector(".text-memory").style.display = "none";
+  createMemoryElement();
+  const off1 = document.querySelector(".off1");
+  const off2 = document.querySelector(".off2");
+  const sn = document.querySelector(".sn");
+  sn.disabled = false;
+  off1.disabled = false;
+  off1.classList.add("on");
+  sn.classList.add("on");
+  off2.disabled = false;
+  off2.classList.add("on");
+};
+// ------------------------------clear history and memory------------------------------
+const clearHistory = () => {
+  const saved = document.querySelector(".memory-save");
+  if (saved.childNodes.length > 3) {
+    const saveQuery = document.querySelectorAll(".memory-container-div");
+    let i = 0;
+    saveQuery.forEach((element) => {
+      element.remove();
+    });
   }
+  document.querySelector(".text-memory").style.display = "block";
+};
 
-  .history-save {
-    display: block;
-    position: absolute;
-    overflow: auto;
-    width: 320px;
-    max-width: 42%;
-    height: 83%;
-    top: 70px;
-    right: 0;
-    z-index: 1;
-    background-color: var(--background);
+const clearMemory = () => {
+  const saved = document.querySelector(".memory-save");
+  if (saved.childNodes.length > 3) {
+    const saveQuery = document.querySelectorAll(".memory-container-div");
+    let i = 0;
+    saveQuery.forEach((element) => {
+      element.remove();
+    });
   }
+  document.querySelector(".text-memory").style.display = "block";
+  const off1 = document.querySelector(".off1");
+  const off2 = document.querySelector(".off2");
+  const sn = document.querySelector(".sn");
+  sn.disabled = true;
+  off1.disabled = true;
+  off1.classList.remove("on");
+  sn.classList.remove("on");
+  off2.disabled = true;
+  off2.classList.remove("on");
+};
+// ------------------------------small buttons in memory------------------------------
+const plusMemory = () => {
+  const savedNodes = document.querySelector(".memory-save");
+  const memoryDivs = document.querySelectorAll(".memory-container-div");
+  if (savedNodes.childNodes.length > 3) {
+    let selected = memoryDivs[0].querySelector(".memory-div-result");
+    selected.innerHTML =
+      parseFloat(calculator.displayValue) + parseFloat(selected.innerHTML);
+  } else {
+    saveMemory();
+  }
+};
 
-  .memory-save {
-    display: block;
-    position: absolute;
-    overflow: auto;
-    width: 320px;
-    max-width: 42%;
-    height: 83%;
-    top: 70px;
-    right: 0;
-    z-index: 1;
-    background-color: var(--background);
+const minusMemory = () => {
+  const savedNodes = document.querySelector(".memory-save");
+  const memoryDivs = document.querySelectorAll(".memory-container-div");
+  if (savedNodes.childNodes.length > 3) {
+    let selected = memoryDivs[0].querySelector(".memory-div-result");
+    selected.innerHTML =
+      parseFloat(selected.innerHTML) - parseFloat(calculator.displayValue);
+  } else {
+    saveMemory();
   }
+};
 
-  .text-memory {
-    margin-top: 30px;
-    font-size: 0.9em;
-  }
-}
+const memoryRecall = () => {
+  const memoryDivs = document.querySelectorAll(".memory-container-div");
+  let selected = memoryDivs[0].querySelector(".memory-div-result");
+  calculator.displayValue = parseFloat(selected.innerHTML);
+  document.getElementById("currentNumber").value = parseFloat(
+    selected.innerHTML
+  );
+};
 
-@media screen and (min-width: 740px) {
-  #container {
-    grid-template-columns: auto 320px;
+const OneMemory = (e) => {
+  if (e.target.classList.contains("memories-buttons-md")) {
+    e.target.parentNode.parentNode.remove();
+    if (document.querySelector(".memory-save").childNodes.length < 4) {
+      document.querySelector(".text-memory").style.display = "block";
+      const off1 = document.querySelector(".off1");
+      const off2 = document.querySelector(".off2");
+      off1.disabled = true;
+      off1.classList.remove("on");
+      off2.disabled = true;
+      off2.classList.remove("on");
+    }
   }
+  if (e.target.classList.contains("memories-buttons-mp")) {
+    const newValue =
+      e.target.parentNode.parentNode.querySelector(".memory-div-result");
+    newValue.innerHTML =
+      parseFloat(calculator.displayValue) + parseFloat(newValue.innerHTML);
+  }
+  if (e.target.classList.contains("memories-buttons-mm")) {
+    const newValue2 =
+      e.target.parentNode.parentNode.querySelector(".memory-div-result");
+    newValue2.innerHTML =
+      parseFloat(newValue2.innerHTML) - parseFloat(calculator.displayValue);
+  }
+};
 
-  .Btn img {
-    width: 26px;
-    height: 26px;
-  }
-}
-
-@media screen and (min-width: 1024px) and (min-height: 620px) {
-  #buttons .bthide {
-    display: block;
-  }
-
-  .Btn {
-    width: 19.6%;
-    height: 19.2%;
-    order: 1;
-    font-family: var(--font-family);
-    font-size: 1.5rem;
-  }
-}
-/* media */
+const memorySave = document.querySelector(".memory-save");
+memorySave.addeListener("click", OneMemory);
