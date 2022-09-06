@@ -212,11 +212,11 @@ class Calculator {
   specialButtons = (action) => {
     let number = this.displayValue;
     switch (action) {
-      case "root":
+      case "square":
         if (number > 1) {
           number = Math.sqrt(number);
           document.getElementById("previousNumber").innerHTML =
-            "&#8730" + " " + "(" + this.displayValue + ")";
+            "√" + "(" + this.displayValue + ")";
           this.displayValue = parseFloat(number.toFixed(7));
           this.firstNumber = parseFloat(number.toFixed(7));
           this.expression = true;
@@ -344,7 +344,7 @@ class Calculator {
       return;
     }
     if (target.classList.contains("radical")) {
-      this.specialButtons("root");
+      this.specialButtons("square");
       this.displayUpdate();
       return;
     }
