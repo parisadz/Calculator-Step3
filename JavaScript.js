@@ -86,6 +86,25 @@ class Calculator {
     this.interruption = true;
     this.operator = operators;
   };
+
+  getDisplayNumber(number) {
+    const stringNumber = number.toString();
+    const integerDigits = parseFloat(stringNumber.split(".")[0]);
+    const decimalDigits = stringNumber.split(".")[1];
+    let integerDisplay;
+    if (isNaN(integerDigits)) {
+      integerDisplay = "";
+    } else {
+      integerDisplay = integerDigits.toLocaleString("en", {
+        maximumFractionDigits: 0,
+      });
+    }
+    if (decimalDigits != null) {
+      return `${integerDisplay}.${decimalDigits}`;
+    } else {
+      return integerDisplay;
+    }
+  }
   // ------------------------------add to history------------------------------
   addToHistory = (bool) => {
     document.querySelector(".text-history").style.display = "none";
@@ -314,7 +333,7 @@ class Calculator {
   // ------------------------------update the display------------------------------
   displayUpdate = () => {
     const display = document.querySelector(".currentNumber");
-    display.value = this.displayValue;
+    display.value = this.getDisplayNumber(this.displayValue);
   };
   // ------------------------------which buttons is clicked------------------------------
   buttonClicked = (e) => {
