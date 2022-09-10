@@ -2,7 +2,6 @@
 
 let root = document.querySelector("html");
 let btnmenu = document.querySelector(".menu-icon");
-console.log("welcome");
 
 // themeable
 btnmenu.addEventListener("click", function () {
