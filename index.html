@@ -28,7 +28,7 @@
       href="https://img.icons8.com/fluency/48/000000/calculator.png"
     />
   </head>
-  <body onload="historyFunction()">
+  <body onload="HistoryFunction()">
     <div id="container">
       <!-- start header -->
       <div id="header">
@@ -51,7 +51,7 @@
             <p class="stand">Standard</p>
           </div>
           <div class="history-icon-container">
-            <a href="#" onclick="showHistory()">
+            <a href="#" onclick="ShowHistory()">
               <img
                 class="history-icon"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABnUlEQVRIid3Vv2oVURAG8N/1JmlCLCzuKwgaBAst/YOiIGosjIWpA4oIGrS1EgtBC32FNHkAnyCIRQQxicFobgSx0ioo/gHNtdhZ7rKeu7sXsYgfHA57vpn5zs4Mc/jfMYqLmMdrbOEbuljADMaaBuviaOF7Cm/Qq1kfMN1EoIcvOIa7hQCbuInDGEcH+3EFLwp2j9CuE+jhV+w/cRsjFT4tzMrS1sPjJgL5upOweYrFxPkRfA2/gekqC+TpStmkMKtfk2ThFxMi3SEEWvo1uTzoL+pQJQBXg1/4VwL7gl//W4HOAH5P8J9S5BM8U93LSxFgZYDIRPCfU85vg5ysEOhE8Fxkd4k/GNzL/GBXgXwee3FclPERJ7AaF9lb4o/Hvppyng715ZJwChM4VDprYy1inE05jeJ9GFyrEUhhLnzfqajj+TD6jpNDBD8jm0fbOFVn/KAgcl11utqySfsjfO43uU0LD/V7fg03ZEUdl3XOAdzCq4LdvSbBi7iADX/Op/LawOlhg+cYwSXZk7kum7BbsjacxzlDPJk7E78BiCOJMrCO34wAAAAASUVORK5CYII="
@@ -62,7 +62,7 @@
         <!-- end upper result -->
         <!-- start result -->
         <div class="resultText">
-          <span id="previousNumber"></span>
+          <span id="PreviousNumber"></span>
           <br />
           <input
             class="currentNumber"
@@ -76,23 +76,19 @@
         <!-- start M's part -->
         <div class="small">
           <div class="small-btn-ms">
-            <button class="small-ms diactive1" disabled onclick="clearMemory()">
+            <button class="small-ms diactive1" disabled onclick="MemoryClear()">
               MC
             </button>
-            <button
-              class="small-ms diactive2"
-              disabled
-              onclick="memoryRecall()"
-            >
+            <button class="small-ms diactive2" disabled onclick="MR()">
               MR
             </button>
-            <button class="small-ms avtive active1" onclick="plusMemory()">
+            <button class="small-ms avtive active1" onclick="MemoryPlus()">
               M+
             </button>
-            <button class="small-ms avtive active2" onclick="minusMemory()">
+            <button class="small-ms avtive active2" onclick="MemoryMinus()">
               M-
             </button>
-            <button class="small-ms avtive active3" onclick="saveMemory()">
+            <button class="small-ms avtive active3" onclick="MemorySave()">
               MS
             </button>
             <button
@@ -118,7 +114,7 @@
             src="https://img.icons8.com/metro/26/000000/percentage2--v1.png"
           />
         </button>
-        <button class="Btn dark currentClear">CE</button>
+        <button class="Btn dark CurrentClear">CE</button>
         <button class="Btn dark clear" id="clear">C</button>
         <button class="Btn dark delete" id="delete">
           <img
