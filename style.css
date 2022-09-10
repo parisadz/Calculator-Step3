@@ -417,6 +417,10 @@ button:hover:enabled {
   background-color: #898989;
 }
 
+.delete-history-hidden {
+  display: none;
+}
+
 .trash-div {
   position: fixed;
   display: flex;
@@ -442,6 +446,37 @@ button:hover:enabled {
 .history-save,
 .memory-save {
   display: none;
+}
+
+.menu {
+  width: 12rem;
+  height: 4.5rem;
+  background-color: #f4f4f4;
+  color: #333;
+  box-shadow: 2px 2px 2px #999;
+  border-radius: 0.2rem;
+  list-style: none;
+  position: fixed;
+}
+
+.menu.off {
+  top: -200%;
+  left: -200%;
+}
+
+.menu-item {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.menu-item:hover,
+.menu-item:active {
+  color: #000;
+  font-weight: 500;
 }
 /* the history and memory part */
 
