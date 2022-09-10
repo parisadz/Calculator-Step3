@@ -174,7 +174,7 @@ h1 {
   font-family: var(--font-family);
 }
 
-#previousNumber {
+#PreviousNumber {
   align-self: flex-end;
   color: #b1afaf;
   font-family: var(--font-family);
@@ -482,7 +482,7 @@ button:hover:enabled {
 
 /* ------------------------------------------------------------------------ */
 
-.para-add {
+.ParaAdd {
   font-size: 15px;
   width: 100%;
   height: 20%;
@@ -490,7 +490,7 @@ button:hover:enabled {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.result-add {
+.ResultAdd {
   font-size: 30px;
   font-weight: 700;
   text-align: right;
