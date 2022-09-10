@@ -40,7 +40,9 @@ class Calculator {
         this.addToHistory(true);
       }
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
-      document.getElementById("previousNumber").innerHTML = "";
+      document.getElementById(
+        "previousNumber"
+      ).innerHTML = `${this.firstNumber} ${operator} ${realValue} ${operators}`;
       this.interruption = false;
     } else if (operators != "=" && this.displayValue != 0 && !this.expression) {
       if (!(operator && this.interruption)) {
@@ -656,3 +658,36 @@ const OneMemory = (e) => {
 
 const memorySave = document.querySelector(".memory-save");
 memorySave.addEventListener("click", OneMemory);
+// ------------------------------right click for delete------------------------------
+let menu = null;
+document.addEventListener("DOMContentLoaded", function () {
+  menu = document.querySelector(".menu");
+  menu.classList.add("off");
+
+  let HisContDiv = document.querySelector(".history-container-div");
+  HisContDiv.addEventListener("div", showMenu);
+
+  menu.addEventListener("mouseleave", hideMenu);
+
+  addMenuListeners();
+});
+
+function addMenuListeners() {
+  document
+    .getElementById("delete-item")
+    .addEventListener("click", deleteHistory);
+}
+
+function showMenu(e) {
+  e.preventDefault();
+  console.log(ev.clientX, ev.clientY);
+  menu.style.top = `${e.clientY - 20}px`;
+  menu.style.left = `${e.clientX - 20}px`;
+  menu.classList.remove("off");
+}
+
+function hideMenu(e) {
+  menu.classList.add("off");
+  menu.style.top = "-200%";
+  menu.style.left = "-200%";
+}
