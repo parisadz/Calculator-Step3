@@ -45,10 +45,10 @@ class Calculator {
     } else if (operators != "=" && this.displayValue != 0 && !this.expression) {
       if (!(operator && this.interruption)) {
         const prevText = document.getElementById("previousNumber");
-        prevText.innerHTML += `${this.displayValue} ${operators} `;
+        prevText.innerHTML += `${this.displayValue} ${operators}`;
       } else {
         const prevText = document.getElementById("previousNumber");
-        prevText.innerHTML = `${this.displayValue} ${operators} `;
+        prevText.innerHTML = `${this.displayValue} ${operators}`;
       }
       this.expression = false;
     } else if (operators == "=" && this.operator == "=" && this.prevNumber) {
@@ -67,7 +67,7 @@ class Calculator {
     } else if (this.prevNumber) {
       document.getElementById(
         "previousNumber"
-      ).innerHTML = `${this.firstNumber} ${operators}`;
+      ).innerHTML = `${this.firstNumber} ${operators} `;
       this.prevNumber = null;
     }
 
@@ -531,17 +531,17 @@ const createMemoryElement = () => {
   contMem.appendChild(contDiv);
 
   const smallButtons1 = document.createElement("button");
-  smallButtons1.className = "memorory-btn-Mdelete";
+  smallButtons1.className = "memory-btn-Mdelete";
   smallButtons1.innerHTML = "MC";
   contDiv.appendChild(smallButtons1);
 
   const smallButtons2 = document.createElement("button");
-  smallButtons2.className = "memorory-btn-Mplus";
+  smallButtons2.className = "memory-btn-Mplus";
   smallButtons2.innerHTML = "M+";
   contDiv.appendChild(smallButtons2);
 
   const smallButtons3 = document.createElement("button");
-  smallButtons3.className = "memorory-btn-Mminus";
+  smallButtons3.className = "memory-btn-Mminus";
   smallButtons3.innerHTML = "M-";
   contDiv.appendChild(smallButtons3);
 };
@@ -549,15 +549,15 @@ const createMemoryElement = () => {
 const saveMemory = () => {
   document.querySelector(".text-memory").style.display = "none";
   createMemoryElement();
-  const off1 = document.querySelector(".off1");
-  const off2 = document.querySelector(".off2");
-  const sn = document.querySelector(".sn");
-  sn.disabled = false;
-  off1.disabled = false;
-  off1.classList.add("on");
-  sn.classList.add("on");
-  off2.disabled = false;
-  off2.classList.add("on");
+  const diactive1 = document.querySelector(".diactive1");
+  const diactive2 = document.querySelector(".diactive2");
+  const extera = document.querySelector(".extera");
+  extera.disabled = false;
+  diactive1.disabled = false;
+  diactive1.classList.add("on");
+  extera.classList.add("on");
+  diactive2.disabled = false;
+  diactive2.classList.add("on");
 };
 // ------------------------------clear history and memory------------------------------
 const clearHistory = () => {
@@ -582,15 +582,15 @@ const clearMemory = () => {
     });
   }
   document.querySelector(".text-memory").style.display = "block";
-  const off1 = document.querySelector(".off1");
-  const off2 = document.querySelector(".off2");
-  const sn = document.querySelector(".sn");
-  sn.disabled = true;
-  off1.disabled = true;
-  off1.classList.remove("on");
-  sn.classList.remove("on");
-  off2.disabled = true;
-  off2.classList.remove("on");
+  const diactive1 = document.querySelector(".diactive1");
+  const diactive2 = document.querySelector(".diactive2");
+  const extera = document.querySelector(".extera");
+  extera.disabled = true;
+  diactive1.disabled = true;
+  diactive1.classList.remove("on");
+  extera.classList.remove("on");
+  diactive2.disabled = true;
+  diactive2.classList.remove("on");
 };
 // ------------------------------small buttons in memory------------------------------
 const plusMemory = () => {
@@ -627,25 +627,26 @@ const memoryRecall = () => {
 };
 
 const OneMemory = (e) => {
-  if (e.target.classList.contains("memories-buttons-md")) {
+  if (e.target.classList.contains("memory-btn-Mdelete")) {
     e.target.parentNode.parentNode.remove();
     if (document.querySelector(".memory-save").childNodes.length < 4) {
       document.querySelector(".text-memory").style.display = "block";
-      const off1 = document.querySelector(".off1");
-      const off2 = document.querySelector(".off2");
-      off1.disabled = true;
-      off1.classList.remove("on");
-      off2.disabled = true;
-      off2.classList.remove("on");
+      document.querySelector(".text-memory").style.display = "block";
+      const diactive1 = document.querySelector(".diactive1");
+      const diactive2 = document.querySelector(".diactive2");
+      diactive1.disabled = true;
+      diactive1.classList.remove("on");
+      diactive2.disabled = true;
+      diactive2.classList.remove("on");
     }
   }
-  if (e.target.classList.contains("memories-buttons-mp")) {
+  if (e.target.classList.contains("memory-btn-Mplus")) {
     const newValue =
       e.target.parentNode.parentNode.querySelector(".memory-div-result");
     newValue.innerHTML =
       parseFloat(calculator.displayValue) + parseFloat(newValue.innerHTML);
   }
-  if (e.target.classList.contains("memories-buttons-mm")) {
+  if (e.target.classList.contains("memory-btn-Mminus")) {
     const newValue2 =
       e.target.parentNode.parentNode.querySelector(".memory-div-result");
     newValue2.innerHTML =
@@ -654,4 +655,4 @@ const OneMemory = (e) => {
 };
 
 const memorySave = document.querySelector(".memory-save");
-memorySave.addeListener("click", OneMemory);
+memorySave.addEventListener("click", OneMemory);
