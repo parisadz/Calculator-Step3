@@ -1,12 +1,5 @@
-/* :root {
-  --background: #f3f3f3;
-  --dark-btn: #e8e8e8;
-  --num-btn: rgb(253, 253, 253);
-  --hover-gray: #e1e1e1;
-  --menu-hover: #e3e3e3;
-} */
-
-:root[data-theme="defult"] {
+/* themable part */
+:root[data-theme="default"] {
   --background: #f3f3f3;
   --dark-btn: #e8e8e8;
   --num-btn: #fdfdfd;
@@ -45,11 +38,15 @@
   --radius: 10px 10px 10px 0;
   --font-family: "Pathway Gothic One", sans-serif;
 }
+/* themable part */
+
+/* ------------------------------------------------------------------------ */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-family);
 }
 
 html,
@@ -73,6 +70,7 @@ body {
   overflow-y: auto;
   overflow-x: auto;
 }
+
 /* the header part */
 #header {
   grid-area: header;
@@ -98,13 +96,21 @@ li:hover {
   background-color: var(--menu-hover);
 }
 
+li:hover:nth-child(3n) {
+  background-color: var(--hover-gray);
+}
+
 h1 {
   font-family: var(--font-family);
   font-size: 0.8rem;
   margin-top: 8px;
   margin-left: 10px;
 }
+/* the header part */
 
+/* ------------------------------------------------------------------------ */
+
+/* the upper result part */
 .standard {
   width: 100%;
   height: 100%;
@@ -112,50 +118,45 @@ h1 {
   flex-direction: row;
 }
 
-.menu,
-.history-icon,
-.trash {
+.stand {
+  margin-left: 5px;
+  margin-top: 7px;
+  font-size: 1.3em;
+  font-family: var(--font-family);
+}
+
+.up {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 18%;
+}
+
+.menu-icon {
   width: 39px;
   height: 39px;
   padding: 10px;
 }
 
-.history-icon {
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-}
-
-.menu:hover {
+.menu-icon:hover {
   background-color: var(--menu-hover);
   border-radius: var(--radius);
 }
 
-.history-icon:hover {
+.history-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+}
+
+.history-icon-container:hover {
   background-color: var(--menu-hover);
 }
+/* the upper result part */
 
-.stand {
-  margin-left: 5px;
-  margin-top: 4px;
-  font-size: 1.3em;
-  font-family: var(--font-family);
-}
-
-.para-add {
-  font-size: 15px;
-  width: 100%;
-  height: 20%;
-  text-align: right;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.result-add {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: right;
-  margin-top: 15px;
-}
+/* ------------------------------------------------------------------------ */
 
 /* the result part */
 #result {
@@ -165,55 +166,37 @@ h1 {
   justify-content: space-between;
 }
 
-/* .number {
-  font-size: 2.8rem;
-  align-self: flex-end;
-  margin-right: 10px;
-  font-weight: 600;
-  font-family: var(--font-family);
-} */
-
-/* .output {
-  font-size: 2.8rem;
-  align-self: flex-end;
-  margin-right: 10px;
-  font-weight: 600;
-  font-family: var(--font-family);
-} */
-
-.output {
-  margin-right: 10px;
-  font-size: 2.8rem;
-  font-weight: 600;
-  font-family: var(--font-family);
+.resultText {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-self: flex-end;
   flex-direction: column;
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
-.output .previous-operand {
-  color: #9c9c9cbf;
-  font-size: 1.8rem;
+  margin-right: 10px;
   font-family: var(--font-family);
 }
 
-[data-operation] {
-  font-weight: 600;
+#previousNumber {
+  align-self: flex-end;
+  color: #b1afaf;
+  font-family: var(--font-family);
 }
 
-.up {
+.currentNumber {
   width: 100%;
-  height: 19.9%;
-  min-height: 39px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-left: 4px;
+  border: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: right;
+  font-family: var(--font-family);
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
+/* the result part */
 
-/* the M's part */
+/* ------------------------------------------------------------------------ */
+
+/* M's part */
 .small {
   width: 100%;
   height: 18%;
@@ -226,7 +209,7 @@ h1 {
   width: 100%;
   height: 100%;
   justify-content: space-evenly;
-  max-width: 550px;
+  max-width: 350px;
 }
 
 .small-ms {
@@ -241,6 +224,22 @@ h1 {
   background-color: transparent;
 }
 
+.active:hover {
+  background-color: var(--hover-gray);
+  border-radius: var(--radius);
+}
+
+.extera {
+  display: block;
+}
+
+button:hover:enabled {
+  background-color: var(--hover-gray);
+}
+/* M's part */
+
+/* ------------------------------------------------------------------------ */
+
 /* the buttons part */
 #buttons {
   grid-area: buttons;
@@ -249,22 +248,20 @@ h1 {
   justify-content: space-evenly;
 }
 
+.Btn img {
+  width: 22px;
+  height: 22px;
+}
+
+.num {
+  background-color: var(--num-btn);
+}
+
 .dark {
   background-color: var(--dark-btn);
 }
 
-.num {
-  /* font-size: 1.6em;
-  font-weight: 600; */
-  background: var(--num-btn);
-}
-
-.one-x {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-#buttons .btnhide {
+#buttons .bthide {
   display: none;
 }
 
@@ -283,15 +280,22 @@ h1 {
   background-color: var(--hover-gray);
 }
 
-.active:hover {
+.Btn:hover:nth-child(5n) {
   background-color: var(--hover-gray);
-  border-radius: var(--radius);
+}
+/* the buttons part */
+
+/* ------------------------------------------------------------------------ */
+
+/* the history and memory part */
+#history,
+.bthide {
+  display: none;
 }
 
-/* the history part */
-#history,
-.btnhide {
-  display: none;
+.his,
+.memory {
+  color: black;
 }
 
 .history-and-memory {
@@ -303,52 +307,159 @@ h1 {
   font-family: var(--font-family);
 }
 
-.mem {
+.hidden-history,
+.hidden-memory {
+  position: absolute;
+  overflow: auto;
+  width: 100%;
+  height: 62%;
+  min-height: 240px;
+  z-index: -1;
+  top: 38%;
+  background-color: var(--background);
+}
+
+.memory {
+  margin-top: 4px;
+  border-bottom: 3px solid orange;
   margin-left: 35px;
-  font-weight: bold;
+}
+
+.memory:hover,
+.his:hover {
+  color: var(--hover-gray);
 }
 
 .his {
   margin-top: 7px;
-  border-bottom: 3px solid orange;
   padding-bottom: 3px;
-  font-weight: bold;
 }
 
-.text-history p {
+#history a {
+  text-decoration: none;
+}
+
+.text-history,
+.text-memory {
   margin-top: 30px;
   margin-left: 8px;
   font-size: 0.9em;
-  font-weight: bold;
-  font-family: var(--font-family);
+  font-weight: 600;
 }
 
-.history-div {
+.history-container-div {
+  background-color: var(--background);
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100px;
   padding: 20px;
 }
 
-.history-div:hover {
+.history-container-div:hover {
   background-color: var(--hover-gray);
 }
 
-.trash {
+.memory-container-div {
+  background-color: var(--background);
+  position: relative;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.memory-container-div:hover {
+  background-color: var(--hover-gray);
+}
+
+.memory-div-result {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.memory-div {
+  position: absolute;
+  top: 45px;
+  width: 150px;
+  height: 30px;
+  right: 10px;
+  display: flex;
+  justify-content: space-around;
+  display: block;
+}
+
+.memory-btn-Mdelete,
+.memory-btn-Mplus,
+.memory-btn-Mminus {
+  border: none;
+  width: 32%;
+  height: 100%;
+}
+
+.memory-div button:hover {
+  background: var(--hover-gray);
+}
+
+.delete-history {
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-history:hover {
+  background-color: #898989;
+}
+
+.trash-div {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  bottom: 40px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 20px;
 }
 
-.trash:hover {
-  background-color: var(--menu-hover);
-  border-radius: var(--radius);
+.trash-div:hover {
+  background-color: var(--hover-gray);
+  border-radius: var(--border);
+}
+
+.trash-main {
+  width: 20px;
+  height: 20px;
+}
+
+.history-save,
+.memory-save {
+  display: none;
+}
+/* the history and memory part */
+
+/* ------------------------------------------------------------------------ */
+
+.para-add {
+  font-size: 15px;
+  width: 100%;
+  height: 20%;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.result-add {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 15px;
 }
 
 .first {
@@ -367,7 +478,9 @@ h1 {
   order: -4;
 }
 
-/* the media part */
+/* ------------------------------------------------------------------------ */
+
+/* media */
 @media screen and (min-width: 500px) {
   #container {
     grid-template-columns: minmax(57%, auto) minmax(43%, 320px);
@@ -377,12 +490,17 @@ h1 {
       "buttons history";
   }
 
+  .Btn {
+    font-family: var(--font-family);
+    font-size: 1rem;
+  }
+
   #history {
     display: block;
     grid-area: history;
   }
 
-  .extera-m {
+  .extera {
     display: none;
   }
 
@@ -394,6 +512,41 @@ h1 {
     width: 100%;
     max-width: 400px;
   }
+
+  .history-icon-container {
+    display: none;
+  }
+
+  .history-save {
+    display: block;
+    position: absolute;
+    overflow: auto;
+    width: 320px;
+    max-width: 42%;
+    height: 83%;
+    top: 70px;
+    right: 0;
+    z-index: 1;
+    background-color: var(--background);
+  }
+
+  .memory-save {
+    display: block;
+    position: absolute;
+    overflow: auto;
+    width: 320px;
+    max-width: 42%;
+    height: 83%;
+    top: 70px;
+    right: 0;
+    z-index: 1;
+    background-color: var(--background);
+  }
+
+  .text-memory {
+    margin-top: 30px;
+    font-size: 0.9em;
+  }
 }
 
 @media screen and (min-width: 740px) {
@@ -401,17 +554,14 @@ h1 {
     grid-template-columns: auto 320px;
   }
 
-  .Btn {
-    font-size: 1.5rem;
-  }
-
-  [data-operation] {
-    font-weight: 550;
+  .Btn img {
+    width: 26px;
+    height: 26px;
   }
 }
 
 @media screen and (min-width: 1024px) and (min-height: 620px) {
-  #buttons .btnhide {
+  #buttons .bthide {
     display: block;
   }
 
@@ -419,5 +569,8 @@ h1 {
     width: 19.6%;
     height: 19.2%;
     order: 1;
+    font-family: var(--font-family);
+    font-size: 1.5rem;
   }
 }
+/* media */
