@@ -89,7 +89,7 @@ class Calculator {
     this.operator = operators;
   };
 
-  getDisplayNumber(number) {
+  GetDisplayNumber(number) {
     const StringNumber = number.toString();
     const IntegerDigits = parseFloat(StringNumber.split(".")[0]);
     const DecimalDigits = StringNumber.split(".")[1];
@@ -370,7 +370,7 @@ class Calculator {
   // ------------------------------update the display------------------------------
   DisplayUpdate = () => {
     const display = document.querySelector(".CurrentNumber");
-    display.value = this.getDisplayNumber(this.DisplayValue);
+    display.value = this.GetDisplayNumber(this.DisplayValue);
   };
   // ------------------------------which buttons is clicked------------------------------
   ButtonClicked = (e) => {
@@ -438,7 +438,6 @@ class Calculator {
   };
 }
 const calculator = new Calculator("0", null, false, null, false, null, null);
-
 const buttons = document.querySelector("#buttons");
 buttons.addEventListener("click", calculator.ButtonClicked);
 calculator.DisplayUpdate();
@@ -501,27 +500,27 @@ const ShowHiddenMemory = () => {
   const active3 = document.querySelector(".active3");
   let z_index = 1;
   z_index = document.querySelector(".lower-history").style.zIndex;
-  const hiddenMemory = document.querySelector(".memory-save");
-  hiddenMemory.classList.add("hidden-memory");
+  const HiddenMemory = document.querySelector(".memory-save");
+  HiddenMemory.classList.add("hidden-memory");
 
-  if (hiddenMemory.style.zIndex > 0) {
+  if (HiddenMemory.style.zIndex > 0) {
     diactive1.disabled = false;
     diactive2.disabled = false;
     active1.disabled = false;
     active2.disabled = false;
     active3.disabled = false;
-    hiddenMemory.style.zIndex = -1;
+    HiddenMemory.style.zIndex = -1;
   } else {
     diactive1.disabled = true;
     diactive2.disabled = true;
     active1.disabled = true;
     active2.disabled = true;
     active3.disabled = true;
-    hiddenMemory.style.display = "block";
+    HiddenMemory.style.display = "block";
     if (z_index != -1) {
-      hiddenMemory.style.zIndex = z_index + 1;
+      HiddenMemory.style.zIndex = z_index + 1;
     } else {
-      hiddenMemory.style.zIndex = 10;
+      HiddenMemory.style.zIndex = 10;
     }
   }
 };
