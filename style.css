@@ -463,7 +463,8 @@ button:hover:enabled {
   align-items: center;
 }
 
-.menu.off {
+.menu,
+.off {
   top: -200%;
   left: -200%;
 }
