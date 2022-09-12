@@ -148,7 +148,7 @@ class Calculator {
 
       function showMenu(e) {
         e.preventDefault();
-        console.log(ev.clientX, ev.clientY);
+        console.log(e.clientX, e.clientY);
         menu.style.top = `${e.clientY - 20}px`;
         menu.style.left = `${e.clientX - 20}px`;
         menu.classList.remove("off");
