@@ -337,7 +337,7 @@ class Calculator {
     switch (operator) {
       case "÷":
         if (!isFinite(FirstNumber / secondNumber)) {
-          alert("cannot divide to zero");
+          alert("❌cannot divide to zero.❌");
           this.clear();
           return;
         }
@@ -369,7 +369,7 @@ class Calculator {
   };
   // ------------------------------update the display------------------------------
   DisplayUpdate = () => {
-    const display = document.querySelector(".currentNumber");
+    const display = document.querySelector(".CurrentNumber");
     display.value = this.getDisplayNumber(this.DisplayValue);
   };
   // ------------------------------which buttons is clicked------------------------------
@@ -450,9 +450,9 @@ function changeFunction() {
 let x = window.matchMedia("(max-width: 500px)");
 x.addEventListener("change", changeFunction);
 
-var currentNumberElem = document.getElementById("currentNumber");
-currentNumberElem.focus();
-currentNumberElem.scrollLeft = currentNumberElem.scrollWidth;
+var CurrentNumberElem = document.getElementById("CurrentNumber");
+CurrentNumberElem.focus();
+CurrentNumberElem.scrollLeft = CurrentNumberElem.scrollWidth;
 // ------------------------------history and memory------------------------------
 const memory = document.querySelector(".memory");
 const history = document.querySelector(".his");
@@ -634,7 +634,7 @@ const MR = () => {
   const memoryDivs = document.querySelectorAll(".memory-container-div");
   let selected = memoryDivs[0].querySelector(".memory-div-result");
   calculator.DisplayValue = parseFloat(selected.innerHTML);
-  document.getElementById("currentNumber").value = parseFloat(
+  document.getElementById("CurrentNumber").value = parseFloat(
     selected.innerHTML
   );
 };
