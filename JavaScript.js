@@ -124,6 +124,41 @@ class Calculator {
       TrashCan.className = "trash-main";
       TrashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
       TrashCanDiv.appendChild(TrashCan);
+      // ------------------------------right click for delete------------------------------
+      let menu = null;
+      document.addEventListener("DOMContentLoaded", function () {
+        menu = document.querySelector(".menu");
+        menu.classList.add("off");
+
+        let HisContDiv = document.querySelector(".history-container-div");
+        HisContDiv.addEventListener("contextmenu", showMenu);
+
+        if (HisContDiv) {
+          menu.addEventListener("mouseleave", hideMenu);
+        }
+
+        addMenuListeners();
+      });
+
+      function addMenuListeners() {
+        document
+          .getElementById("delete-item")
+          .addEventListener("click", DeleteHistory);
+      }
+
+      function showMenu(e) {
+        e.preventDefault();
+        console.log(ev.clientX, ev.clientY);
+        menu.style.top = `${e.clientY - 20}px`;
+        menu.style.left = `${e.clientX - 20}px`;
+        menu.classList.remove("off");
+      }
+
+      function hideMenu(e) {
+        menu.classList.add("off");
+        menu.style.top = "-200%";
+        menu.style.left = "-200%";
+      }
     }
     // ------------------------------create element p / node / ParaAdd / para-result / node-result / delete-history------------------------------
     const para = document.createElement("p");
@@ -658,36 +693,3 @@ const MemoryPart = (e) => {
 
 const memorySave = document.querySelector(".memory-save");
 memorySave.addEventListener("click", MemoryPart);
-// ------------------------------right click for delete------------------------------
-let menu = null;
-document.addEventListener("DOMContentLoaded", function () {
-  menu = document.querySelector(".menu");
-  menu.classList.add("off");
-
-  let HisContDiv = document.querySelector(".history-container-div");
-  HisContDiv.addEventListener("div", showMenu);
-
-  menu.addEventListener("mouseleave", hideMenu);
-
-  addMenuListeners();
-});
-
-function addMenuListeners() {
-  document
-    .getElementById("delete-item")
-    .addEventListener("click", DeleteHistory);
-}
-
-function showMenu(e) {
-  e.preventDefault();
-  console.log(ev.clientX, ev.clientY);
-  menu.style.top = `${e.clientY - 20}px`;
-  menu.style.left = `${e.clientX - 20}px`;
-  menu.classList.remove("off");
-}
-
-function hideMenu(e) {
-  menu.classList.add("off");
-  menu.style.top = "-200%";
-  menu.style.left = "-200%";
-}
