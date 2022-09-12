@@ -78,13 +78,13 @@ body {
   justify-content: space-between;
 }
 
-ul {
+.ul {
   display: flex;
   list-style: none;
   width: 137px;
 }
 
-li {
+.li {
   height: 100%;
   width: 33.333333%;
   display: flex;
@@ -92,11 +92,11 @@ li {
   align-items: center;
 }
 
-li:hover {
+.li:hover {
   background-color: var(--menu-hover);
 }
 
-li:hover:nth-child(3n) {
+.li:hover:nth-child(3n) {
   background-color: var(--hover-gray);
 }
 
@@ -453,10 +453,14 @@ button:hover:enabled {
   height: 2rem;
   background-color: #f4f4f4;
   color: #333;
+  border: 1px solid #aaa;
   box-shadow: 2px 2px 2px #999;
   border-radius: 0.2rem;
   list-style: none;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu.off {
@@ -466,10 +470,10 @@ button:hover:enabled {
 
 .menu-item {
   height: 1.5rem;
+  line-height: 1.5rem;
   font-size: 1rem;
   font-weight: 100;
-  padding: 1rem;
-  margin-left: 0.5rem;
+  padding: 0 1rem;
   cursor: pointer;
 }
 
@@ -477,6 +481,7 @@ button:hover:enabled {
 .menu-item:active {
   color: #000;
   font-weight: 500;
+  background: var(--hover-gray);
 }
 /* the history and memory part */
 
