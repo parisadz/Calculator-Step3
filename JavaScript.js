@@ -122,7 +122,7 @@ class Calculator {
       HistoryElem.appendChild(TrashCanDiv);
       const TrashCan = document.createElement("img");
       TrashCan.className = "trash-main";
-      TrashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
+      // TrashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
       TrashCanDiv.appendChild(TrashCan);
       // ------------------------------right click for delete------------------------------
       let menu = null;
@@ -215,7 +215,6 @@ class Calculator {
     DeleteHistory.className = "delete-history";
     ContDiv.appendChild(DeleteHistory);
     const trashIcon = document.createElement("img");
-    trashIcon.src = "https://img.icons8.com/ios/20/000000/delete--v2.png";
     DeleteHistory.appendChild(trashIcon);
   };
   // ------------------------------function decimal / percent / clear / currentClear / delete------------------------------
@@ -230,7 +229,7 @@ class Calculator {
     }
   };
 
-  percentage = () => {
+  percent = () => {
     if (this.interruption === false) {
       let number = this.DisplayValue;
       number = this.FirstNumber * (this.DisplayValue / 100);
@@ -383,12 +382,12 @@ class Calculator {
       this.DisplayUpdate();
       return;
     }
-    if (target.classList.contains("percentage")) {
-      this.percentage();
+    if (target.classList.contains("percent")) {
+      this.percent();
       this.DisplayUpdate();
       return;
     }
-    if (target.classList.contains("radical")) {
+    if (target.classList.contains("square")) {
       this.SpecialOperators("square");
       this.DisplayUpdate();
       return;
