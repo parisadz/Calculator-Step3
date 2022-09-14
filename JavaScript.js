@@ -120,10 +120,6 @@ class Calculator {
       const TrashCanDiv = document.createElement("div");
       TrashCanDiv.className = "trash-div";
       HistoryElem.appendChild(TrashCanDiv);
-      const TrashCan = document.createElement("img");
-      TrashCan.className = "trash-main";
-      // TrashCan.src = "https://img.icons8.com/ios/50/000000/trash--v1.png";
-      TrashCanDiv.appendChild(TrashCan);
       // ------------------------------right click for delete------------------------------
       let menu = null;
       document.addEventListener("DOMContentLoaded", function () {
