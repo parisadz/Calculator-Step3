@@ -283,6 +283,56 @@ button:hover:enabled {
 .Btn:hover:nth-child(5n) {
   background-color: var(--hover-gray);
 }
+
+.percent {
+  background: url("https://img.icons8.com/metro/26/000000/percentage2--v1.png");
+}
+
+.square {
+  background: url("https://img.icons8.com/ios-glyphs/30/000000/square-root.png");
+}
+
+.delete {
+  background: url("https://img.icons8.com/material-outlined/24/000000/clear-symbol--v1.png");
+}
+
+.divide {
+  background: url("https://img.icons8.com/small/30/undefined/divide.png");
+}
+
+.multiply {
+  background: url("https://img.icons8.com/material/24/000000/multiply--v1.png");
+}
+
+.minus {
+  background: url("https://img.icons8.com/material-two-tone/24/000000/minus--v1.png");
+}
+
+.plus {
+  background: url("https://img.icons8.com/material/24/000000/plus-math--v2.png");
+}
+
+.equal {
+  background: url("https://img.icons8.com/material/24/000000/equal-sign--v1.png");
+}
+
+.plus-minus {
+  background: url("https://img.icons8.com/fluency-systems-regular/28/undefined/plus-minus.png");
+}
+
+.percent,
+.square,
+.delete,
+.divide,
+.multiply,
+.minus,
+.plus,
+.equal,
+.plus-minus {
+  background-color: var(--dark-btn);
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* the buttons part */
 
 /* ------------------------------------------------------------------------ */
@@ -403,7 +453,7 @@ button:hover:enabled {
 
 .delete-history {
   width: 30px;
-  height: 40px;
+  height: 30px;
   position: absolute;
   top: 10px;
   left: 50px;
@@ -411,6 +461,9 @@ button:hover:enabled {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("https://img.icons8.com/ios/20/000000/delete--v2.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .delete-history:hover {
@@ -439,6 +492,9 @@ button:hover:enabled {
 }
 
 .trash-main {
+  background: url("https://img.icons8.com/ios/50/000000/trash--v1.png");
+  background-repeat: no-repeat;
+  background-position: center;
   width: 20px;
   height: 20px;
 }
