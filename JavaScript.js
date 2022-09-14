@@ -47,7 +47,7 @@ class Calculator {
     } else if (operators != "=" && this.DisplayValue != 0 && !this.expression) {
       if (!(operator && this.interruption)) {
         const prevText = document.getElementById("PreviousNumber");
-        prevText.innerHTML += `${this.DisplayValue} ${operators}`;
+        prevText.innerHTML = `${this.DisplayValue} ${operators}`;
       } else {
         const prevText = document.getElementById("PreviousNumber");
         prevText.innerHTML = `${this.DisplayValue} ${operators}`;
@@ -63,7 +63,7 @@ class Calculator {
         this.AddToHistory(false);
       }
       this.DisplayValue = `${parseFloat(result.toFixed(7))}`;
-      document.getElementById("PreviousNumber").innerHTML = "";
+      // document.getElementById("PreviousNumber").innerHTML = "";
       this.interruption = true;
       return;
     } else if (this.PrevNumber) {
