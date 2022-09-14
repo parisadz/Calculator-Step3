@@ -484,19 +484,14 @@ button:hover:enabled {
   width: 20px;
   height: 20px;
   padding: 20px;
+  background: url("https://img.icons8.com/ios/20/000000/delete--v2.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .trash-div:hover {
   background-color: var(--hover-gray);
   border-radius: var(--border);
-}
-
-.trash-main {
-  background: url("https://img.icons8.com/ios/50/000000/trash--v1.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 20px;
-  height: 20px;
 }
 
 .history-save,
